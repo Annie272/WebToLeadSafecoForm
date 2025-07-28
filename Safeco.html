@@ -104,22 +104,22 @@
     <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
       <div>
         <label for="00NU7000005zuOz" class="block text-sm font-medium text-gray-700">First Name</label>
-        <input type="text" id="00NU7000005zuOz" name="00NU7000005zuOz" required class="w-full p-2 border border-gray-300 rounded-lg" />
+        <input type="text" id="00NU7000005zuOz" name="driver_first_name" required class="w-full p-2 border border-gray-300 rounded-lg" />
       </div>
       <div>
         <label for="00NU7000005zuQb" class="block text-sm font-medium text-gray-700">Last Name</label>
-        <input type="text" id="00NU7000005zuQb" name="00NU7000005zuQb" required class="w-full p-2 border border-gray-300 rounded-lg" />
+        <input type="text" id="00NU7000005zuQb" name="driver_last_name" required class="w-full p-2 border border-gray-300 rounded-lg" />
       </div>
     </div>
 
     <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
       <div>
         <label for="00NU7000005zuSD" class="block text-sm font-medium text-gray-700">Birthdate</label>
-        <input type="date" id="00NU7000005zuSD" name="00NU7000005zuSD" required class="w-full p-2 border border-gray-300 rounded-lg" />
+        <input type="date" id="00NU7000005zuSD" name="driver_birthdate" required class="w-full p-2 border border-gray-300 rounded-lg" />
       </div>
       <div>
         <label for="00NU7000005zqRr" class="block text-sm font-medium text-gray-700">Gender</label>
-        <select id="00NU7000005zqRr" name="00NU7000005zqRr" required class="w-full p-2 border border-gray-300 rounded-lg">
+        <select id="00NU7000005zqRr" name="driver_gender" required class="w-full p-2 border border-gray-300 rounded-lg">
           <option value="">--Select--</option>
           <option value="Male">Male</option>
           <option value="Female">Female</option>
@@ -131,7 +131,7 @@
     <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
       <div>
         <label for="00NU7000005zuTp" class="block text-sm font-medium text-gray-700">Marital Status</label>
-        <select id="00NU7000005zuTp" name="00NU7000005zuTp" required class="w-full p-2 border border-gray-300 rounded-lg">
+        <select id="00NU7000005zuTp" name="driver_marital_status" required class="w-full p-2 border border-gray-300 rounded-lg">
           <option value="">--Select--</option>
           <option value="Single">Single</option>
           <option value="Married">Married</option>
@@ -142,7 +142,7 @@
       </div>
       <div>
         <label for="00NU7000005zuVR" class="block text-sm font-medium text-gray-700">Relationship to Insured</label>
-        <select id="00NU7000005zuVR" name="00NU7000005zuVR" required class="w-full p-2 border border-gray-300 rounded-lg">
+        <select id="00NU7000005zuVR" name="driver_relationship" required class="w-full p-2 border border-gray-300 rounded-lg">
           <option value="">--Select--</option>
           <option value="Spouse">Spouse</option>
           <option value="Domestic Partner">Domestic Partner</option>
@@ -157,13 +157,13 @@
     <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
       <div>
         <label for="00NU7000006VQAr" class="block text-sm font-medium text-gray-700">Driver Type</label>
-        <select id="00NU7000006VQAr" name="00NU7000006VQAr" required class="w-full p-2 border border-gray-300 rounded-lg">
+        <select id="00NU7000006VQAr" name="driver_type" required class="w-full p-2 border border-gray-300 rounded-lg">
           <option value="Rated" selected>Rated</option>
         </select>
       </div>
       <div>
         <label for="00NU7000005zuIX" class="block text-sm font-medium text-gray-700">License State</label>
-        <select id="00NU7000005zuIX" name="00NU7000005zuIX" required class="w-full p-2 border border-gray-300 rounded-lg">
+        <select id="00NU7000005zuIX" name="driver_license_state" required class="w-full p-2 border border-gray-300 rounded-lg">
           <option value="">--Select--</option>
           <option value="Arizona">Arizona</option>
           <option value="California">California</option>
@@ -173,18 +173,18 @@
 
     <div>
       <label for="00NU7000005zuK9" class="block text-sm font-medium text-gray-700">License Number</label>
-      <input type="text" id="00NU7000005zuK9" name="00NU7000005zuK9" required class="w-full p-2 border border-gray-300 rounded-lg" />
+      <input type="text" id="00NU7000005zuK9" name="driver_license_number" required class="w-full p-2 border border-gray-300 rounded-lg" />
     </div>
 
     <div>
       <label for="00NU7000006XoH7" class="block text-sm font-medium text-gray-700">Age When First Licensed</label>
-      <input type="number" id="00NU7000006XoH7" name="00NU7000006XoH7" required class="w-full p-2 border border-gray-300 rounded-lg" />
+      <input type="number" id="00NU7000006XoH7" name="driver_licensed_age" required class="w-full p-2 border border-gray-300 rounded-lg" />
       <div id="ageValidationError" class="text-sm text-red-500 mt-1 hidden">Age does not match birthdate.</div>
     </div>
 
     <div>
       <label for="00NU7000006VQUD" class="block text-sm font-medium text-gray-700">Has this driver's license been suspended/revoked in last 5 years?</label>
-      <select id="00NU7000006VQUD" name="00NU7000006VQUD" class="w-full p-2 border border-gray-300 rounded-lg">
+      <select id="00NU7000006VQUD" name="driver_license_suspended" class="w-full p-2 border border-gray-300 rounded-lg">
         <option value="">--Select--</option>
         <option value="Yes">Yes</option>
         <option value="No">No</option>
@@ -195,7 +195,7 @@
       <label for="00NU7000006VU1Z" class="block text-sm font-medium text-gray-700">
         Has driver had any reportable incidents?
       </label>
-      <select id="00NU7000006VU1Z" name="00NU7000006VU1Z" required class="w-full p-2 border border-gray-300 rounded-lg">
+      <select id="00NU7000006VU1Z" name="driver_incidents" required class="w-full p-2 border border-gray-300 rounded-lg">
         <option value="">--Select--</option>
         <option value="Yes">Yes</option>
         <option value="No">No</option>
@@ -233,7 +233,7 @@
 
     <div>
       <label for="00NU7000006VU3B" class="block text-sm font-medium text-gray-700">SR-22 Filing</label>
-      <select id="00NU7000006VU3B" name="00NU7000006VU3B" required class="w-full p-2 border border-gray-300 rounded-lg">
+      <select id="00NU7000006VU3B" name="driver_sr22_filing" required class="w-full p-2 border border-gray-300 rounded-lg">
         <option value="">--Select--</option>
         <option value="Yes">Yes</option>
         <option value="No">No</option>
@@ -243,11 +243,11 @@
     <div id="sr22AdditionalFields" class="hidden space-y-4">
       <div>
         <label for="00NU7000006VU4n" class="block text-sm font-medium text-gray-700">SR-22 Filing End Date</label>
-        <input type="date" id="00NU7000006VU4n" name="00NU7000006VU4n"  class="w-full p-2 border border-gray-300 rounded-lg" />
+        <input type="date" id="00NU7000006VU4n" name="sr22_end_date"  class="w-full p-2 border border-gray-300 rounded-lg" />
       </div>
       <div>
         <label for="00NU70000063b2n" class="block text-sm font-medium text-gray-700">SR-22 Filing State</label>
-        <select id="00NU70000063b2n" name="00NU70000063b2n"  class="w-full p-2 border border-gray-300 rounded-lg">
+        <select id="00NU70000063b2n" name="sr22_state"  class="w-full p-2 border border-gray-300 rounded-lg">
           <option value="">--Select--</option>
           <option value="Arizona">Arizona</option>
           <option value="California">California</option>
@@ -255,7 +255,7 @@
       </div>
       <div>
         <label for="00NU7000006VUBF" class="block text-sm font-medium text-gray-700">SR-22 Case Number</label>
-        <input type="text" id="00NU7000006VUBF" name="00NU7000006VUBF"  class="w-full p-2 border border-gray-300 rounded-lg" />
+        <input type="text" id="00NU7000006VUBF" name="sr22_case_number"  class="w-full p-2 border border-gray-300 rounded-lg" />
       </div>
     </div>
 
@@ -267,7 +267,7 @@
   <label for="00NU7000006VUJJ" class="block text-sm font-medium text-gray-700">
     Do you want to add additional Named Insured Driver?
   </label>
-  <select id="00NU7000006VUJJ" name="00NU7000006VUJJ" required class="w-full p-2 border border-gray-300 rounded-lg" >
+  <select id="00NU7000006VUJJ" name="driver_add_named_insured" required class="w-full p-2 border border-gray-300 rounded-lg" >
     <option value="">--Select--</option>
     <option value="Yes">Yes</option>
     <option value="No">No</option>
@@ -277,7 +277,7 @@
     <label for="00NU7000006VUKv"  class="block text-sm font-medium text-gray-700">
       Select Named Insured Driver
     </label>
-    <select id="00NU7000006VUKv" name="00NU7000006VUKv"  class="w-full p-2 border border-gray-300 rounded-lg">
+    <select id="00NU7000006VUKv" name="named_insured_selection"  class="w-full p-2 border border-gray-300 rounded-lg">
       <option value="">--Select--</option>
     </select>
   </div>
