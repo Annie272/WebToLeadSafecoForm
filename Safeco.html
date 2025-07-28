@@ -1,0 +1,610 @@
+<!-- Updated VS Web Form: Effective Date visible only when Policy Number and LOB are filled -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Safeco Web-to-Lead Form</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <style>
+    .hidden { display: none; }
+    .error { border-color: #ef4444; }
+    .error-message {
+      color: #ef4444;
+      font-size: 0.875rem;
+      margin-top: 0.25rem;
+    }
+  </style>
+</head>
+<body class="bg-gray-100 flex items-center justify-center min-h-screen p-6">
+  <form
+    action="https://test.salesforce.com/servlet/servlet.WebToLead?encoding=UTF-8&orgId=00DU7000006EuID"
+    method="POST"
+    class="bg-white p-8 rounded-2xl shadow-md w-full max-w-xl space-y-6"
+    id="mainForm"
+    autocomplete="off"
+  >
+    <h2 class="text-2xl font-bold text-center text-gray-800">Safeco Form</h2>
+
+    <!-- Hidden Fields -->
+    <input type="hidden" name="oid" value="00DU7000006EuID" />
+    <input type="hidden" name="recordType" value="012U7000003Ie25IAC" />
+    <input type="hidden" name="retURL" value="https://bennettandporter.com/" />
+    <input type="hidden" name="first_name" value="driver1" />
+    <input type="hidden" name="last_name" value="Testlead1" />
+    <input type="hidden" name="status" value="New" />
+    <input type="hidden" name="email" value="test123safeco@gmail.com" />
+    <input type="hidden" name="phone" value="2367236712" />
+    <input type="hidden" name="lead_source" value="Web Form" />
+    <input type="hidden" name="company" value="Caelius Test Safeco New" />
+    <input type="hidden" name="Debug_Notes__c" value="Safeco Test: 2025-06-27 07:21AM" />
+
+    <!-- Quote or Policy Request -->
+    <div>
+      <label class="block text-sm font-medium text-gray-700 mb-2">Is this a quote or a policy change request?</label>
+      <div class="flex space-x-4">
+        <label class="inline-flex items-center">
+          <input type="radio" name="00NU7000006IOzh" value="Y" required class="mr-2" />Yes
+        </label>
+        <label class="inline-flex items-center">
+          <input type="radio" name="00NU7000006IOzh" value="N" required class="mr-2" />No
+        </label>
+      </div>
+      <div id="quotePolicyError" class="error-message hidden">Please select an option</div>
+    </div>
+
+    <!-- Policy Action -->
+    <div>
+      <label for="policyAction" class="block text-sm font-medium text-gray-700">Policy Action</label>
+      <select id="00NU7000005zuNN" name="00NU7000005zuNN" required class="mt-1 w-full p-2 border border-gray-300 rounded-lg shadow-sm">
+        <option value="">--None--</option>
+        <option value="Replace Vehicle">Replace Vehicle</option>
+        <option value="Add Vehicle">Add Vehicle</option>
+        <option value="Remove Vehicle">Remove Vehicle</option>
+        <option value="Add Driver">Add Driver</option>
+        <option value="Remove Driver">Remove Driver</option>
+        <option value="Update Address">Update Address</option>
+        <option value="ID Card">ID Card</option>
+        <option value="EOI">EOI</option>
+        <option value="Billing Info">Billing Info</option>
+      </select>
+      <div id="policyActionError" class="error-message hidden">Please select a policy action</div>
+    </div>
+
+  
+
+
+ 
+<!-- FULL Safeco Add Driver Section -->
+<div id="addDriverSection" class="hidden space-y-4">
+  <div>
+    <label for="00NU7000005zuX3" class="block text-sm font-medium text-gray-700">Policy Number</label>
+    <input type="text" id="00NU7000005zuX3" name="00NU7000005zuX3" required class="mt-1 w-full p-2 border border-gray-300 rounded-lg shadow-sm" />
+  </div>
+  <div>
+    <label for="00NU7000006Hi7d" class="block text-sm font-medium text-gray-700">Line of Business</label>
+    <select id="00NU7000006Hi7d" name="00NU7000006Hi7d" required class="mt-1 w-full p-2 border border-gray-300 rounded-lg shadow-sm">
+      <option value="">--None--</option>
+       <option value="Auto (includes motorhome, trailer &amp;amp; antique or classic)">Auto</option>
+          <option value="Home">Home</option>
+          <option value="Fire">Fire</option>
+          <option value="Motorcycle">Motorcycle</option>
+          <option value="Off-Road Rec Vehicle">Off-Road Rec Vehicle</option>
+          <option value="Umbrella">Umbrella</option>
+          <option value="Watercraft">Watercraft</option>
+    </select>
+  </div>
+  <div id="addDriverEffectiveDateWrap" class="hidden">
+    <label for="00NU7000005zuLl" class="block text-sm font-medium text-gray-700">Effective Date</label>
+    <input type="date" id="00NU7000005zuLl" name="00NU7000005zuLl" required class="mt-1 w-full p-2 border border-gray-300 rounded-lg shadow-sm" />
+  </div>
+
+  <!-- DRIVER DETAILS -->
+  <div id="driverDetailsSection" class="hidden space-y-4">
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+      <div>
+        <label for="00NU7000005zuOz" class="block text-sm font-medium text-gray-700">First Name</label>
+        <input type="text" id="00NU7000005zuOz" name="driver_first_name" required class="w-full p-2 border border-gray-300 rounded-lg" />
+      </div>
+      <div>
+        <label for="00NU7000005zuQb" class="block text-sm font-medium text-gray-700">Last Name</label>
+        <input type="text" id="00NU7000005zuQb" name="driver_last_name" required class="w-full p-2 border border-gray-300 rounded-lg" />
+      </div>
+    </div>
+
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+      <div>
+        <label for="00NU7000005zuSD" class="block text-sm font-medium text-gray-700">Birthdate</label>
+        <input type="date" id="00NU7000005zuSD" name="driver_birthdate" required class="w-full p-2 border border-gray-300 rounded-lg" />
+      </div>
+      <div>
+        <label for="00NU7000005zqRr" class="block text-sm font-medium text-gray-700">Gender</label>
+        <select id="00NU7000005zqRr" name="driver_gender" required class="w-full p-2 border border-gray-300 rounded-lg">
+          <option value="">--Select--</option>
+          <option value="Male">Male</option>
+          <option value="Female">Female</option>
+          <option value="Other">Other</option>
+        </select>
+      </div>
+    </div>
+
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+      <div>
+        <label for="00NU7000005zuTp" class="block text-sm font-medium text-gray-700">Marital Status</label>
+        <select id="00NU7000005zuTp" name="driver_marital_status" required class="w-full p-2 border border-gray-300 rounded-lg">
+          <option value="">--Select--</option>
+          <option value="Single">Single</option>
+          <option value="Married">Married</option>
+          <option value="Divorced">Divorced</option>
+          <option value="Separated">Separated</option>
+          <option value="Widowed">Widowed</option>
+        </select>
+      </div>
+      <div>
+        <label for="00NU7000005zuVR" class="block text-sm font-medium text-gray-700">Relationship to Insured</label>
+        <select id="00NU7000005zuVR" name="driver_relationship" required class="w-full p-2 border border-gray-300 rounded-lg">
+          <option value="">--Select--</option>
+          <option value="Spouse">Spouse</option>
+          <option value="Domestic Partner">Domestic Partner</option>
+          <option value="Child">Child</option>
+          <option value="Parent">Parent</option>
+          <option value="Other Relative">Other Relative</option>
+          <option value="Roommate">Roommate</option>
+        </select>
+      </div>
+    </div>
+
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+      <div>
+        <label for="00NU7000006VQAr" class="block text-sm font-medium text-gray-700">Driver Type</label>
+        <select id="00NU7000006VQAr" name="driver_type" required class="w-full p-2 border border-gray-300 rounded-lg">
+          <option value="Rated" selected>Rated</option>
+        </select>
+      </div>
+      <div>
+        <label for="00NU7000005zuIX" class="block text-sm font-medium text-gray-700">License State</label>
+        <select id="00NU7000005zuIX" name="driver_license_state" required class="w-full p-2 border border-gray-300 rounded-lg">
+          <option value="">--Select--</option>
+          <option value="Arizona">Arizona</option>
+          <option value="California">California</option>
+        </select>
+      </div>
+    </div>
+
+    <div>
+      <label for="00NU7000005zuK9" class="block text-sm font-medium text-gray-700">License Number</label>
+      <input type="text" id="00NU7000005zuK9" name="driver_license_number" required class="w-full p-2 border border-gray-300 rounded-lg" />
+    </div>
+
+    <div>
+      <label for="00NU7000006XoH7" class="block text-sm font-medium text-gray-700">Age When First Licensed</label>
+      <input type="number" id="00NU7000006XoH7" name="driver_licensed_age" required class="w-full p-2 border border-gray-300 rounded-lg" />
+      <div id="ageValidationError" class="text-sm text-red-500 mt-1 hidden">Age does not match birthdate.</div>
+    </div>
+
+    <div>
+      <label for="00NU7000006VQUD" class="block text-sm font-medium text-gray-700">Has this driver's license been suspended/revoked in last 5 years?</label>
+      <select id="00NU7000006VQUD" name="driver_license_suspended" class="w-full p-2 border border-gray-300 rounded-lg">
+        <option value="">--Select--</option>
+        <option value="Yes">Yes</option>
+        <option value="No">No</option>
+      </select>
+    </div>
+
+    <div>
+      <label for="00NU7000006VU1Z" class="block text-sm font-medium text-gray-700">
+        Has driver had any reportable incidents?
+      </label>
+      <select id="00NU7000006VU1Z" name="driver_incidents" required class="w-full p-2 border border-gray-300 rounded-lg">
+        <option value="">--Select--</option>
+        <option value="Yes">Yes</option>
+        <option value="No">No</option>
+      </select>
+    </div>
+
+   <!-- Good Student Fields Section -->
+<div id="goodStudentFieldsSection" class="hidden space-y-4">
+  <!-- Good Student Discount -->
+  <div>
+    <label for="00NU7000006XpI1" class="block text-sm font-medium text-gray-700">
+      Good Student Discount
+    </label>
+    <select id="00NU7000006XpI1" name="00NU7000006XpI1" class="w-full p-2 border border-gray-300 rounded-lg" required>
+      <option value="">--Select--</option>
+      <option value="Yes">Yes</option>
+      <option value="No">No</option>
+    </select>
+  </div>
+
+  <!-- Good Student Driver -->
+  <div>
+    <label for="00NU70000063abN" class="block text-sm font-medium text-gray-700">
+      Good Student Driver
+    </label>
+    <select id="00NU70000063abN" name="00NU70000063abN" class="w-full p-2 border border-gray-300 rounded-lg" required>
+      <option value="">--Select--</option>
+      <option value="Yes">Yes</option>
+      <option value="No">No</option>
+    </select>
+  </div>
+</div>
+
+    
+
+    <div>
+      <label for="00NU7000006VU3B" class="block text-sm font-medium text-gray-700">SR-22 Filing</label>
+      <select id="00NU7000006VU3B" name="driver_sr22_filing" required class="w-full p-2 border border-gray-300 rounded-lg">
+        <option value="">--Select--</option>
+        <option value="Yes">Yes</option>
+        <option value="No">No</option>
+      </select>
+    </div>
+
+    <div id="sr22AdditionalFields" class="hidden space-y-4">
+      <div>
+        <label for="00NU7000006VU4n" class="block text-sm font-medium text-gray-700">SR-22 Filing End Date</label>
+        <input type="date" id="00NU7000006VU4n" name="sr22_end_date"  class="w-full p-2 border border-gray-300 rounded-lg" />
+      </div>
+      <div>
+        <label for="00NU70000063b2n" class="block text-sm font-medium text-gray-700">SR-22 Filing State</label>
+        <select id="00NU70000063b2n" name="sr22_state"  class="w-full p-2 border border-gray-300 rounded-lg">
+          <option value="">--Select--</option>
+          <option value="Arizona">Arizona</option>
+          <option value="California">California</option>
+        </select>
+      </div>
+      <div>
+        <label for="00NU7000006VUBF" class="block text-sm font-medium text-gray-700">SR-22 Case Number</label>
+        <input type="text" id="00NU7000006VUBF" name="sr22_case_number"  class="w-full p-2 border border-gray-300 rounded-lg" />
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<!-- Additional Named Insured Section -->
+<div id="namedInsuredSection" class="hidden space-y-4 pt-4 border-t border-gray-200 mt-4">
+  <label for="00NU7000006VUJJ" class="block text-sm font-medium text-gray-700">
+    Do you want to add additional Named Insured Driver?
+  </label>
+  <select id="00NU7000006VUJJ" name="driver_add_named_insured" required class="w-full p-2 border border-gray-300 rounded-lg" >
+    <option value="">--Select--</option>
+    <option value="Yes">Yes</option>
+    <option value="No">No</option>
+  </select>
+
+  <div class="hidden">
+    <label for="00NU7000006VUKv"  class="block text-sm font-medium text-gray-700">
+      Select Named Insured Driver
+    </label>
+    <select id="00NU7000006VUKv" name="named_insured_selection"  class="w-full p-2 border border-gray-300 rounded-lg">
+      <option value="">--Select--</option>
+    </select>
+  </div>
+</div>
+  <!-- RightTrack Participation Section -->
+  <div id="rightTrackSection" class="hidden space-y-4 pt-4 border-t border-gray-200 mt-4">
+    <label class="block text-sm font-medium text-gray-700">
+      Do you want to participate for RightTrack?
+    </label>
+    <select id="00NU7000006VUPl" name="00NU7000006VUPl" required class="w-full p-2 border border-gray-300 rounded-lg">
+      <option value="">--Select--</option>
+      <option value="Yes">Yes</option>
+      <option value="No">No</option>
+    </select>
+  
+    <div id="rightTrackDetails" class="hidden space-y-4">
+      <div>
+        <label for="00NU7000006VUWD" class="block text-sm font-medium text-gray-700">Request Reason</label>
+        <select id="00NU7000006VUWD" name="00NU7000006VUWD" class="w-full p-2 border border-gray-300 rounded-lg">
+          <option value="">--Select--</option>
+          <option value="New youthful driver">New youthful driver</option>
+          <option value="Save Opportunity">Save Opportunity</option>
+          <option value="Customer request by name">Customer request by name</option>
+          <option value="Existing Auto policy with Telematics">Existing Auto policy with Telematics</option>
+        </select>
+      </div>
+  
+      <div>
+        <label for="00NU7000006Xogv" class="block text-sm font-medium text-gray-700">Email</label>
+        <input type="email" id="00NU7000006Xogv" name="00NU7000006Xogv" class="w-full p-2 border border-gray-300 rounded-lg" />
+      </div>
+  
+      <div>
+        <label for="00NU7000006VQPO" class="block text-sm font-medium text-gray-700">Mobile Phone is same as Primary Phone?</label>
+        <select id="00NU7000006VQPO" name="00NU7000006VQPO" class="w-full p-2 border border-gray-300 rounded-lg">
+          <option value="">--Select--</option>
+          <option value="Yes">Yes</option>
+          <option value="No">No</option>
+        </select>
+      </div>
+  
+      <div id="alternateMobileWrap" class="hidden">
+        <label for="00N4x00000QCvmg" class="block text-sm font-medium text-gray-700">Mobile/Alternate Phone Number</label>
+        <input type="tel" id="00N4x00000QCvmg" name="00N4x00000QCvmg" pattern="[0-9]{10}" placeholder="e.g. 5551234567" class="w-full p-2 border border-gray-300 rounded-lg" />
+      </div>
+    </div>
+  </div>
+
+  <div id="rightTrackConfirmWrap" class="hidden space-y-2">
+    <div>
+      <label class="inline-flex items-start gap-2 text-sm text-gray-700">
+        <input type="checkbox" id="00NU7000006XpRh" name="00NU7000006XpRh" class="mt-1" />
+        I have confirmed the customer’s compatible smartphone and email address.
+      </label>
+    </div>
+    <div>
+      <label class="inline-flex items-start gap-2 text-sm text-gray-700">
+        <input type="checkbox" id="00NU7000006XoKM" name="00NU7000006XoKM" class="mt-1" />
+        I have explained the RightTrack program to the customer.
+      </label>
+    </div>
+  </div>
+  
+
+  <div class="pt-4">
+    <button type="submit" class="w-full bg-blue-600 hover:bg-blue-700 text-white py-2 px-4 rounded-lg shadow">
+      Submit
+    </button>
+  </div>
+
+  
+  <script>
+    document.addEventListener("DOMContentLoaded", function () {
+      const form = document.getElementById("mainForm");
+  
+      const birthdateInput = document.getElementById("00NU7000005zuSD");
+      const licensedAgeInput = document.getElementById("00NU7000006XoH7");
+      const ageValidationError = document.getElementById("ageValidationError");
+  
+      const policyAction = document.getElementById("00NU7000005zuNN");
+      const policyNumber = document.getElementById("00NU7000005zuX3");
+      const lob = document.getElementById("00NU7000006Hi7d");
+      const addDriverSection = document.getElementById("addDriverSection");
+      const effectiveWrap = document.getElementById("addDriverEffectiveDateWrap");
+      const driverDetails = document.getElementById("driverDetailsSection");
+  
+      const sr22Select = document.getElementById("00NU7000006VU3B");
+      const sr22Fields = document.getElementById("sr22AdditionalFields");
+      const sr22CaseField = document.getElementById("00NU7000006VUBF");
+  
+      const suspensionSelect = document.getElementById("00NU7000006VQUD");
+      const suspendConditionalFields = document.getElementById("sr22FilingBlock") || driverDetails;
+  
+      const incidentsSelect = document.getElementById("00NU7000006VU1Z");
+  
+      const namedInsuredWrap = document.getElementById("namedInsuredSection");
+      const namedInsuredToggle = document.getElementById("00NU7000006VUJJ");
+      const namedInsuredDropdown = document.getElementById("00NU7000006VUKv");
+      const firstName = document.getElementById("00NU7000005zuOz");
+      const lastName = document.getElementById("00NU7000005zuQb");
+  
+      const rightTrackSection = document.getElementById("rightTrackSection");
+      const rightTrackParticipation = document.getElementById("00NU7000006VUPl");
+      const rightTrackDetails = document.getElementById("rightTrackDetails");
+      const righttrackSameMobile = document.getElementById("00NU7000006VQPO");
+      const alternateMobileWrap = document.getElementById("alternateMobileWrap");
+      const alternateMobile = document.getElementById("00N4x00000QCvmg");
+  
+      function validateAgeMatch() {
+        const birthdate = birthdateInput.value;
+        const enteredAge = parseInt(licensedAgeInput.value);
+        if (!birthdate || isNaN(enteredAge)) return true;
+  
+        const birthYear = new Date(birthdate).getFullYear();
+        const currentYear = new Date().getFullYear();
+        const actualAge = currentYear - birthYear;
+  
+        const isValid = enteredAge <= actualAge;
+        ageValidationError.classList.toggle("hidden", isValid);
+        licensedAgeInput.classList.toggle("error", !isValid);
+        return isValid;
+      }
+  
+      function updateAddDriverVisibility() {
+        const isAddDriver = policyAction.value === "Add Driver";
+        const hasPolicy = policyNumber && policyNumber.value.trim() !== "";
+        const hasLOB = lob && lob.value.trim() !== "";
+      
+        const showExtra = isAddDriver && hasPolicy && hasLOB;
+      
+        addDriverSection.classList.toggle("hidden", !isAddDriver);
+        effectiveWrap.classList.toggle("hidden", !showExtra);
+        driverDetails.classList.toggle("hidden", !showExtra);
+        document.getElementById("goodStudentFieldsSection").classList.toggle("hidden", !showExtra);
+      }
+      
+
+
+
+      
+  
+      alternateMobile?.addEventListener("input", function () {
+        const regex = /^[0-9]{10}$/;
+        if (!regex.test(this.value)) {
+          this.setCustomValidity("Enter a valid 10-digit phone number.");
+        } else {
+          this.setCustomValidity("");
+        }
+      });
+  
+      function toggleSR22Fields() {
+        sr22Fields.classList.toggle("hidden", sr22Select.value !== "Yes");
+      }
+  
+      function toggleNamedInsuredSection() {
+        namedInsuredWrap?.classList.toggle("hidden", sr22CaseField.value.trim() === "");
+      }
+  
+      function checkSuspensionStatus() {
+        if (suspensionSelect.value === "Yes") {
+          suspendConditionalFields.classList.add("hidden");
+          setTimeout(() => {
+            suspensionSelect.scrollIntoView({ behavior: "smooth", block: "center" });
+            alert("You cannot proceed further due to license suspension/revocation history.");
+            suspensionSelect.value = "";
+            suspendConditionalFields.classList.remove("hidden");
+          }, 150);
+        } else {
+          suspendConditionalFields.classList.remove("hidden");
+        }
+      }
+  
+      function checkIncidentsStatus() {
+        if (incidentsSelect.value === "Yes") {
+          alert("You can expect a new premium due to reportable incidents.");
+        }
+      }
+  
+      function toggleNamedInsuredDropdown() {
+        if (namedInsuredToggle.value === "Yes") {
+          namedInsuredDropdown.parentElement.classList.remove("hidden");
+          updateNamedInsuredDropdown();
+        } else {
+          namedInsuredDropdown.parentElement.classList.add("hidden");
+          namedInsuredDropdown.innerHTML = "<option value=''>--Select--</option>";
+        }
+      }
+  
+      function updateNamedInsuredDropdown() {
+        const fullName = `${firstName.value.trim()} ${lastName.value.trim()}`.trim();
+        namedInsuredDropdown.innerHTML = `<option value="">--Select--</option>`;
+        if (fullName !== "") {
+          const option = document.createElement("option");
+          option.value = fullName;
+          option.textContent = fullName;
+          namedInsuredDropdown.appendChild(option);
+        }
+      }
+  
+      // RightTrack visibility logic
+      sr22Select?.addEventListener("change", () => {
+        const show = sr22Select.value.trim() !== "";
+        rightTrackSection.classList.toggle("hidden", !show);
+        namedInsuredWrap.classList.toggle("hidden", !show);
+      });
+  
+      rightTrackParticipation?.addEventListener("change", () => {
+        const isYes = rightTrackParticipation.value === "Yes";
+        rightTrackDetails.classList.toggle("hidden", !isYes);
+        document.getElementById("rightTrackConfirmWrap").classList.toggle("hidden", !isYes);
+        
+        // Update required status dynamically
+        document.getElementById("00NU7000006XpRh").required = isYes;
+        document.getElementById("00NU7000006XoKM").required = isYes;
+      });
+      
+  
+      righttrackSameMobile?.addEventListener("change", () => {
+        alternateMobileWrap.classList.toggle("hidden", righttrackSameMobile.value !== "No");
+      });
+  
+      function setDynamicRequiredFields() {
+        const isAddDriver = policyAction.value === "Add Driver";
+        const isReplaceVehicle = policyAction.value === "Replace Vehicle";
+  
+        policyNumber.required = isAddDriver || isReplaceVehicle;
+        lob.required = isAddDriver || isReplaceVehicle;
+        document.getElementById("00NU7000005zuLl").required = isAddDriver || isReplaceVehicle;
+  
+        const sr22Visible = sr22Select.value === "Yes";
+        document.getElementById("00NU7000006VU4n").required = sr22Visible;
+        document.getElementById("00NU70000063b2n").required = sr22Visible;
+        sr22CaseField.required = sr22Visible;
+  
+        const rtVisible = rightTrackParticipation.value === "Yes";
+        document.getElementById("00NU7000006VUWD").required = rtVisible;
+        document.getElementById("00NU7000006Xogv").required = rtVisible;
+        
+        righttrackSameMobile.required = rtVisible;
+  
+        const altRequired = rtVisible && righttrackSameMobile.value === "No";
+        alternateMobile.required = altRequired;
+  
+        const named = namedInsuredToggle.value === "Yes";
+        namedInsuredDropdown.required = named;
+
+        const showGoodStudent = isDriverSectionVisible;
+goodStudentDiscount.required = showGoodStudent;
+goodStudentDriver.required = showGoodStudent;
+      }
+
+
+      const checkbox1 = document.getElementById("00NU7000006XpRh");
+const checkbox2 = document.getElementById("00NU7000006XoKM");
+const rtVisible = document.getElementById("rightTrackDetails")?.classList.contains("hidden") === false;
+
+if (rtVisible && (!checkbox1.checked || !checkbox2.checked)) {
+  e.preventDefault();
+  alert("You must confirm the RightTrack checkboxes before submitting.");
+  if (!checkbox1.checked) checkbox1.focus();
+  else checkbox2.focus();
+  return;
+}
+  
+      firstName?.addEventListener("input", updateNamedInsuredDropdown);
+      lastName?.addEventListener("input", updateNamedInsuredDropdown);
+      sr22CaseField?.addEventListener("input", toggleNamedInsuredSection);
+      birthdateInput?.addEventListener("change", validateAgeMatch);
+      licensedAgeInput?.addEventListener("input", validateAgeMatch);
+  
+      policyAction?.addEventListener("change", updateAddDriverVisibility);
+      policyNumber?.addEventListener("input", updateAddDriverVisibility);
+      lob?.addEventListener("change", updateAddDriverVisibility);
+  
+      sr22Select?.addEventListener("change", toggleSR22Fields);
+      suspensionSelect?.addEventListener("change", checkSuspensionStatus);
+      incidentsSelect?.addEventListener("change", checkIncidentsStatus);
+      namedInsuredToggle?.addEventListener("change", toggleNamedInsuredDropdown);
+  
+      ["change", "input"].forEach(evt => {
+        ["00NU7000006VU3B", "00NU7000006VUPl", "00NU7000006VQPO", "00NU7000006VUJJ"]
+          .forEach(id => document.getElementById(id)?.addEventListener(evt, setDynamicRequiredFields));
+      });
+  
+      form?.addEventListener("submit", function (e) {
+        setDynamicRequiredFields();
+        if (!validateAgeMatch()) {
+          e.preventDefault();
+          licensedAgeInput.focus();
+          return;
+        }
+        if (suspensionSelect.value === "Yes") {
+          e.preventDefault();
+          alert("You cannot submit this form due to suspension.");
+          suspensionSelect.scrollIntoView({ behavior: "smooth", block: "center" });
+          return;
+        }
+        const invalid = form.querySelector(":invalid");
+        if (invalid) {
+          e.preventDefault();
+          invalid.scrollIntoView({ behavior: "smooth", block: "center" });
+          invalid.focus();
+        }
+
+        const rtVisible = rightTrackParticipation.value === "Yes";
+const checkbox1 = document.getElementById("00NU7000006XpRh");
+const checkbox2 = document.getElementById("00NU7000006XoKM");
+
+if (rtVisible && (!checkbox1.checked || !checkbox2.checked)) {
+  e.preventDefault();
+  alert("You must confirm both RightTrack checkboxes before submitting.");
+  if (!checkbox1.checked) checkbox1.focus();
+  else checkbox2.focus();
+  return;
+}
+      });
+  
+      // Initial load
+      updateAddDriverVisibility();
+      toggleSR22Fields();
+      toggleNamedInsuredSection();
+      checkSuspensionStatus();
+      setDynamicRequiredFields();
+    });
+  </script>
+</body>
+</html>
+
+    
+
