@@ -17,13 +17,12 @@
       margin-top: 0.25rem;
     }
     .sf-date-field {
-  color: #000 !important; /* Always shows typed value as black */
-}
-/* Only the placeholder text is gray */
-.sf-date-field::placeholder {
-  color: #a0aec0 !important;
-  opacity: 1; /* Ensures placeholder is not transparent */
-}
+      color: #000 !important; /* Always shows typed value as black */
+    }
+    .sf-date-field::placeholder {
+      color: #a0aec0 !important;
+      opacity: 1; /* Ensures placeholder is not transparent */
+    }
   </style>
 </head>
 <body class="bg-gray-100 flex items-center justify-center min-h-screen p-6">
@@ -47,11 +46,10 @@
     <input type="hidden" name="phone" value="2367236712" />
     <input type="hidden" name="lead_source" value="Web Form" />
     <input type="hidden" name="company" value="Caelius Test Safeco New" />
-    
 
     <!-- Quote or Policy Request -->
     <div>
-      <label class="block text-sm font-medium text-gray-700 mb-2">Is this a quote or a policy change request?</label>
+      <label class="block text-sm font-medium text-gray-700 mb-2">Is this a quote or a real time change request?</label>
       <div class="flex space-x-4">
         <label class="inline-flex items-center">
           <input type="radio" name="00NU7000006IOzh" value="Y" required class="mr-2" />Yes
@@ -85,7 +83,18 @@
     <div id="addDriverSection" class="hidden space-y-4">
       <div>
         <label for="00NU7000005zuX3" class="block text-sm font-medium text-gray-700">Policy Number</label>
-        <input type="text" id="00NU7000005zuX3" name="00NU7000005zuX3" required class="mt-1 w-full p-2 border border-gray-300 rounded-lg shadow-sm" />
+        <input
+          type="text"
+          id="00NU7000005zuX3"
+          name="00NU7000005zuX3"
+          required
+          pattern="Y\d{7}"
+          maxlength="8"
+          minlength="8"
+          class="mt-1 w-full p-2 border border-gray-300 rounded-lg shadow-sm"
+          title="Policy Number must start with 'Y' and be 8 characters total (e.g., Y1234567)"
+        />
+        <div id="policyNumberError" class="error-message hidden">Policy Number must start with 'Y' and be 8 digits total (e.g., Y1234567).</div>
       </div>
       <div>
         <label for="00NU7000006Hi7d" class="block text-sm font-medium text-gray-700">Line of Business</label>
@@ -115,10 +124,14 @@
 
       <!-- DRIVER DETAILS -->
       <div id="driverDetailsSection" class="hidden space-y-4">
-        <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
           <div>
             <label for="00NU7000005zuOz" class="block text-sm font-medium text-gray-700">First Name</label>
             <input type="text" id="00NU7000005zuOz" name="00NU7000005zuOz" required class="w-full p-2 border border-gray-300 rounded-lg" />
+          </div>
+          <div>
+            <label for="00NU7000006bcKb" class="block text-sm font-medium text-gray-700">Middle Name</label>
+            <input type="text" id="00NU7000006bcKb" name="00NU7000006bcKb" class="w-full p-2 border border-gray-300 rounded-lg" />
           </div>
           <div>
             <label for="00NU7000005zuQb" class="block text-sm font-medium text-gray-700">Last Name</label>
@@ -183,9 +196,79 @@
           <div>
             <label for="00NU7000005zuIX" class="block text-sm font-medium text-gray-700">License State</label>
             <select id="00NU7000005zuIX" name="00NU7000005zuIX" required class="w-full p-2 border border-gray-300 rounded-lg">
-              <option value="">--Select--</option>
+              <option value="">--None--</option>
+              <!-- all states options here as before -->
               <option value="Arizona">Arizona</option>
-              <option value="California">California</option>
+              
+            <option value="Alabama">Alabama</option>
+            <option value="Alaska">Alaska</option>
+            <option value="Alberta">Alberta</option>
+            <option value="Arkansas">Arkansas</option>
+            <option value="British Columbia">British Columbia</option>
+            <option value="California">California</option>
+            <option value="Colorado">Colorado</option>
+            <option value="Connecticut">Connecticut</option>
+            <option value="Delaware">Delaware</option>
+            <option value="Dist Of Columbia">Dist Of Columbia</option>
+            <option value="Florida">Florida</option>
+            <option value="Georgia">Georgia</option>
+            <option value="Guam">Guam</option>
+            <option value="Hawaii">Hawaii</option>
+            <option value="Idaho">Idaho</option>
+            <option value="Illinois">Illinois</option>
+            <option value="Indiana">Indiana</option>
+            <option value="International">International</option>
+            <option value="Iowa">Iowa</option>
+            <option value="Kansas">Kansas</option>
+            <option value="Kentucky">Kentucky</option>
+            <option value="Louisiana">Louisiana</option>
+            <option value="Maine">Maine</option>
+            <option value="Manitoba">Manitoba</option>
+            <option value="Maryland">Maryland</option>
+            <option value="Massachusetts">Massachusetts</option>
+            <option value="Mexico">Mexico</option>
+            <option value="Michigan">Michigan</option>
+            <option value="Minnesota">Minnesota</option>
+            <option value="Mississippi">Mississippi</option>
+            <option value="Missouri">Missouri</option>
+            <option value="Montana">Montana</option>
+            <option value="Nebraska">Nebraska</option>
+            <option value="Nevada">Nevada</option>
+            <option value="New Brunswick">New Brunswick</option>
+            <option value="New Hampshire">New Hampshire</option>
+            <option value="New Jersey">New Jersey</option>
+            <option value="New Mexico">New Mexico</option>
+            <option value="New York">New York</option>
+            <option value="Newfoundland">Newfoundland</option>
+            <option value="North Carolina">North Carolina</option>
+            <option value="North Dakota">North Dakota</option>
+            <option value="Northwest Territories">Northwest Territories</option>
+            <option value="Nova Scotia">Nova Scotia</option>
+            <option value="Nunavut">Nunavut</option>
+            <option value="Ohio">Ohio</option>
+            <option value="Oklahoma">Oklahoma</option>
+            <option value="Ontario">Ontario</option>
+            <option value="Oregon">Oregon</option>
+            <option value="Pennsylvania">Pennsylvania</option>
+            <option value="Prince Edward Island">Prince Edward Island</option>
+            <option value="Puerto Rico">Puerto Rico</option>
+            <option value="Quebec">Quebec</option>
+            <option value="Rhode Island">Rhode Island</option>
+            <option value="Saskatchewan">Saskatchewan</option>
+            <option value="South Carolina">South Carolina</option>
+            <option value="South Dakota">South Dakota</option>
+            <option value="Tennessee">Tennessee</option>
+            <option value="Texas">Texas</option>
+            <option value="Utah">Utah</option>
+            <option value="Vermont">Vermont</option>
+            <option value="Virgin Islands">Virgin Islands</option>
+            <option value="Virginia">Virginia</option>
+            <option value="Washington">Washington</option>
+            <option value="West Virginia">West Virginia</option>
+            <option value="Wisconsin">Wisconsin</option>
+            <option value="Wyoming">Wyoming</option>
+            <option value="Yukon Territory">Yukon Territory</option>
+            <option value="District of Columbia">District of Columbia</option>
             </select>
           </div>
         </div>
@@ -264,14 +347,82 @@
           <div>
             <label for="00NU70000063b2n" class="block text-sm font-medium text-gray-700">SR-22 Filing State</label>
             <select id="00NU70000063b2n" name="00NU70000063b2n"  class="w-full p-2 border border-gray-300 rounded-lg">
-              <option value="">--Select--</option>
-              <option value="Arizona">Arizona</option>
-              <option value="California">California</option>
+              <option value="">--None--</option>
+             <option value="Arizona">Arizona</option>
+            <option value="Alabama">Alabama</option>
+            <option value="Alaska">Alaska</option>
+            <option value="Alberta">Alberta</option>
+            <option value="Arkansas">Arkansas</option>
+            <option value="British Columbia">British Columbia</option>
+            <option value="California">California</option>
+            <option value="Colorado">Colorado</option>
+            <option value="Connecticut">Connecticut</option>
+            <option value="Delaware">Delaware</option>
+            <option value="Dist Of Columbia">Dist Of Columbia</option>
+            <option value="Florida">Florida</option>
+            <option value="Georgia">Georgia</option>
+            <option value="Guam">Guam</option>
+            <option value="Hawaii">Hawaii</option>
+            <option value="Idaho">Idaho</option>
+            <option value="Illinois">Illinois</option>
+            <option value="Indiana">Indiana</option>
+            <option value="International">International</option>
+            <option value="Iowa">Iowa</option>
+            <option value="Kansas">Kansas</option>
+            <option value="Kentucky">Kentucky</option>
+            <option value="Louisiana">Louisiana</option>
+            <option value="Maine">Maine</option>
+            <option value="Manitoba">Manitoba</option>
+            <option value="Maryland">Maryland</option>
+            <option value="Massachusetts">Massachusetts</option>
+            <option value="Mexico">Mexico</option>
+            <option value="Michigan">Michigan</option>
+            <option value="Minnesota">Minnesota</option>
+            <option value="Mississippi">Mississippi</option>
+            <option value="Missouri">Missouri</option>
+            <option value="Montana">Montana</option>
+            <option value="Nebraska">Nebraska</option>
+            <option value="Nevada">Nevada</option>
+            <option value="New Brunswick">New Brunswick</option>
+            <option value="New Hampshire">New Hampshire</option>
+            <option value="New Jersey">New Jersey</option>
+            <option value="New Mexico">New Mexico</option>
+            <option value="New York">New York</option>
+            <option value="Newfoundland">Newfoundland</option>
+            <option value="North Carolina">North Carolina</option>
+            <option value="North Dakota">North Dakota</option>
+            <option value="Northwest Territories">Northwest Territories</option>
+            <option value="Nova Scotia">Nova Scotia</option>
+            <option value="Nunavut">Nunavut</option>
+            <option value="Ohio">Ohio</option>
+            <option value="Oklahoma">Oklahoma</option>
+            <option value="Ontario">Ontario</option>
+            <option value="Oregon">Oregon</option>
+            <option value="Pennsylvania">Pennsylvania</option>
+            <option value="Prince Edward Island">Prince Edward Island</option>
+            <option value="Puerto Rico">Puerto Rico</option>
+            <option value="Quebec">Quebec</option>
+            <option value="Rhode Island">Rhode Island</option>
+            <option value="Saskatchewan">Saskatchewan</option>
+            <option value="South Carolina">South Carolina</option>
+            <option value="South Dakota">South Dakota</option>
+            <option value="Tennessee">Tennessee</option>
+            <option value="Texas">Texas</option>
+            <option value="Utah">Utah</option>
+            <option value="Vermont">Vermont</option>
+            <option value="Virgin Islands">Virgin Islands</option>
+            <option value="Virginia">Virginia</option>
+            <option value="Washington">Washington</option>
+            <option value="West Virginia">West Virginia</option>
+            <option value="Wisconsin">Wisconsin</option>
+            <option value="Wyoming">Wyoming</option>
+            <option value="Yukon Territory">Yukon Territory</option>
+            <option value="District of Columbia">District of Columbia</option>
             </select>
           </div>
           <div>
-            <label for="00NU7000006VUBF" class="block text-sm font-medium text-gray-700">SR-22 Case Number</label>
-            <input type="text" id="00NU7000006VUBF" name="00NU7000006VUBF"  class="w-full p-2 border border-gray-300 rounded-lg" />
+            <label for="00NU7000006VUBF" class="block text-sm font-medium text-gray-700 mb-2">SR-22 Case Number</label>
+            <input type="text" id="00NU7000006VUBF" name="00NU7000006VUBF" class="w-full p-2 border border-gray-300 rounded-lg shadow-sm" />
           </div>
         </div>
       </div>
@@ -337,13 +488,13 @@
     <div id="rightTrackConfirmWrap" class="hidden space-y-2">
       <div>
         <label class="inline-flex items-start gap-2 text-sm text-gray-700">
-          <input type="checkbox" id="00NU7000006XpRh" name="00NU7000006XpRh" class="mt-1" />
+          <input type="checkbox" id="00NU7000006XpRh" name="00NU7000006XpRh" value="1" class="mt-1" />
           I have confirmed the customer’s compatible smartphone and email address.
         </label>
       </div>
       <div>
         <label class="inline-flex items-start gap-2 text-sm text-gray-700">
-          <input type="checkbox" id="00NU7000006XoKM" name="00NU7000006XoKM" class="mt-1" />
+          <input type="checkbox" id="00NU7000006XoKM" name="00NU7000006XoKM" value="1" class="mt-1" />
           I have explained the RightTrack program to the customer.
         </label>
       </div>
@@ -360,7 +511,7 @@
       function parseMMDDYYYY(s) {
         if (!/^(\d{2})\/(\d{2})\/(\d{4})$/.test(s)) return null;
         const [m, d, y] = s.split('/').map(Number);
-        if (m < 1 || m > 12 || d < 1 || d > 31) return null; // crude range check
+        if (m < 1 || m > 12 || d < 1 || d > 31) return null;
         const date = new Date(y, m - 1, d);
         if (date.getMonth() !== m - 1 || date.getDate() !== d || date.getFullYear() !== y) return null;
         return date;
@@ -411,15 +562,27 @@
         });
         if (errorDate) e.preventDefault();
       });
-      // --- END Pikaday/Date logic ---
 
-      // --- Your ORIGINAL JS (unchanged except: birthdateInput points to text input now!) ---
+      // --- Policy Number Live Validation ---
+      const policyNumberInput = document.getElementById("00NU7000005zuX3");
+      const policyNumberError = document.getElementById("policyNumberError");
+      function validatePolicyNumberField() {
+        const val = policyNumberInput.value.trim();
+        const valid = /^Y\d{7}$/.test(val);
+        policyNumberInput.classList.toggle("error", !valid && val.length > 0);
+        policyNumberError.classList.toggle("hidden", valid || val.length === 0);
+        policyNumberInput.setCustomValidity(valid || val.length === 0 ? "" : "Policy Number must start with 'Y' and be 8 characters (e.g., Y1234567)");
+      }
+      policyNumberInput.addEventListener("input", validatePolicyNumberField);
+      policyNumberInput.addEventListener("blur", validatePolicyNumberField);
+
+      // --- Other Form Logic (unchanged except for new middleName event) ---
       const form = document.getElementById("mainForm");
       const birthdateInput = document.getElementById("00NU7000005zuSD");
       const licensedAgeInput = document.getElementById("00NU7000006XoH7");
       const ageValidationError = document.getElementById("ageValidationError");
       const policyAction = document.getElementById("00NU7000005zuNN");
-      const policyNumber = document.getElementById("00NU7000005zuX3");
+      const policyNumber = policyNumberInput;
       const lob = document.getElementById("00NU7000006Hi7d");
       const addDriverSection = document.getElementById("addDriverSection");
       const effectiveWrap = document.getElementById("addDriverEffectiveDateWrap");
@@ -434,6 +597,7 @@
       const namedInsuredToggle = document.getElementById("00NU7000006VUJJ");
       const namedInsuredDropdown = document.getElementById("00NU7000006VUKv");
       const firstName = document.getElementById("00NU7000005zuOz");
+      const middleName = document.getElementById("00NU7000006bcKb");
       const lastName = document.getElementById("00NU7000005zuQb");
       const rightTrackSection = document.getElementById("rightTrackSection");
       const rightTrackParticipation = document.getElementById("00NU7000006VUPl");
@@ -495,7 +659,7 @@
       }
       function checkIncidentsStatus() {
         if (incidentsSelect.value === "Yes") {
-          alert("You can expect a new premium due to reportable incidents.");
+          alert("You may expect some changes in the premium due to reportable incidents.");
         }
       }
       function toggleNamedInsuredDropdown() {
@@ -508,7 +672,7 @@
         }
       }
       function updateNamedInsuredDropdown() {
-        const fullName = `${firstName.value.trim()} ${lastName.value.trim()}`.trim();
+        const fullName = `${firstName.value.trim()} ${middleName.value.trim()} ${lastName.value.trim()}`.replace(/\s+/g,' ').trim();
         namedInsuredDropdown.innerHTML = `<option value="">--Select--</option>`;
         if (fullName !== "") {
           const option = document.createElement("option");
@@ -550,11 +714,12 @@
         alternateMobile.required = altRequired;
         const named = namedInsuredToggle.value === "Yes";
         namedInsuredDropdown.required = named;
-        const showGoodStudent = isDriverSectionVisible;
-        goodStudentDiscount.required = showGoodStudent;
-        goodStudentDriver.required = showGoodStudent;
+        // Assume goodStudentDiscount/goodStudentDriver are defined if present
+        if (document.getElementById("00NU7000006XpI1")) document.getElementById("00NU7000006XpI1").required = isAddDriver && hasPolicy && hasLOB;
+        if (document.getElementById("00NU7000006XpLF")) document.getElementById("00NU7000006XpLF").required = isAddDriver && hasPolicy && hasLOB;
       }
       firstName?.addEventListener("input", updateNamedInsuredDropdown);
+      middleName?.addEventListener("input", updateNamedInsuredDropdown);
       lastName?.addEventListener("input", updateNamedInsuredDropdown);
       sr22CaseField?.addEventListener("input", toggleNamedInsuredSection);
       birthdateInput?.addEventListener("change", validateAgeMatch);
@@ -605,6 +770,7 @@
       toggleNamedInsuredSection();
       checkSuspensionStatus();
       setDynamicRequiredFields();
+      validatePolicyNumberField();
     });
     </script>
   </form>
