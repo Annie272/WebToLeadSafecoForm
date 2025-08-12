@@ -756,6 +756,8 @@ Policy Changes        </h3>
         document.getElementById("00NU7000006VU4n").required = sr22Visible;
         document.getElementById("00NU70000063b2n").required = sr22Visible;
         sr22CaseField.required = sr22Visible;
+
+
         const rtVisible = rightTrackParticipation.value === "Yes";
         document.getElementById("00NU7000006VUWD").required = rtVisible;
         document.getElementById("00NU7000006Xogv").required = rtVisible;
@@ -807,13 +809,25 @@ Policy Changes        </h3>
         const rtVisible = rightTrackParticipation.value === "Yes";
         const checkbox1 = document.getElementById("00NU7000006XpRh");
         const checkbox2 = document.getElementById("00NU7000006XoKM");
-        if (rtVisible && (!checkbox1.checked || !checkbox2.checked)) {
-          e.preventDefault();
-          alert("You must confirm both RightTrack checkboxes before submitting.");
-          if (!checkbox1.checked) checkbox1.focus();
-          else checkbox2.focus();
-          return;
-        }
+       if (rtVisible) {
+    const checkbox1 = document.getElementById("00NU7000006XpRh");
+    const checkbox2 = document.getElementById("00NU7000006XoKM");
+    if (!checkbox1.checked || !checkbox2.checked) {
+        e.preventDefault();
+        alert("You must confirm both RightTrack checkboxes before submitting.");
+        if (!checkbox1.checked) checkbox1.focus();
+        else checkbox2.focus();
+        return;
+    }
+} else {
+    // Ensure they are not required when No
+    document.getElementById("00NU7000006VUWD").required = false;
+    document.getElementById("00NU7000006Xogv").required = false;
+    righttrackSameMobile.required = false;
+    alternateMobile.required = false;
+    document.getElementById("00NU7000006XpRh").required = false;
+    document.getElementById("00NU7000006XoKM").required = false;
+}
       });
       updateAddDriverVisibility();
       toggleSR22Fields();
