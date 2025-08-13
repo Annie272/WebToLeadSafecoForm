@@ -23,6 +23,34 @@
       color: #a0aec0 !important;
       opacity: 1; /* Ensures placeholder is not transparent */
     }
+
+
+     .tooltip {
+        position: relative;
+        display: inline-block;
+      }
+      .tooltip .tooltiptext {
+        visibility: hidden;
+        width: 320px;
+        background-color: #f9fafb;
+        color: #1f2937;
+        text-align: left;
+        border-radius: 6px;
+        padding: 10px;
+        border: 1px solid #d1d5db;
+        position: absolute;
+        z-index: 10;
+        bottom: 125%;
+        left: 50%;
+        margin-left: -160px;
+        font-size: 0.85rem;
+        line-height: 1.3;
+        box-shadow: 0 2px 6px rgb(0 0 0 / 0.15);
+      }
+      .tooltip:hover .tooltiptext,
+      .tooltip:focus-within .tooltiptext {
+        visibility: visible;
+      }
   </style>
 </head>
 <body class="bg-gray-100 flex items-center justify-center min-h-screen p-6">
@@ -327,12 +355,23 @@ Policy Changes        </h3>
           </select>
         </div>
         <!-- Good Student Fields Section -->
+         
         <div id="goodStudentFieldsSection" class="space-y-4">
           <!-- Good Student Discount -->
           <div>
-            <label for="00NU7000006XpI1" class="block text-sm font-medium text-gray-700">
-              Good Student Discount
-            </label>
+            <div class="tooltip">
+  <label for="00NU7000006XpI1" class="block text-sm font-medium text-gray-700">
+    Good Student Discount
+  </label>
+  <span class="tooltiptext">
+    Young driver Full time student with cumulative GPA 3.0 or higher/ B average.
+    <br>
+    <br>
+    
+   " Safeco requires Proof of documents for Good Student, Driver’s training
+discount. You are required to provide within 7 days to avoid discount being removed."
+  </span>
+</div>
             <select id="00NU7000006XpI1" name="00NU7000006XpI1" class="w-full p-2 border border-gray-300 rounded-lg" required>
               <option value="">--Select--</option>
               <option value="Yes">Yes</option>
@@ -341,9 +380,18 @@ Policy Changes        </h3>
           </div>
           <!-- Good Student Driver -->
           <div>
-            <label for="00NU7000006XpLF" class="block text-sm font-medium text-gray-700">
-              Distant Student Discount
-            </label>
+            <div class="tooltip">
+  <label for="00NU7000006XpLF" class="block text-sm font-medium text-gray-700">
+    Distant Student Discount
+  </label>
+  <span class="tooltiptext">
+    A Youthful Operator who is in your customer's household but is a resident student at an educational institution over 100 road miles from the principal garaging address qualifies for this discount if they do not have a car at school.
+    <br>
+    <br>
+    "Safeco requires Proof of documents for Good Student, Driver’s training
+discount. You are required to provide within 7 days to avoid discount being removed."
+  </span>
+</div>
             <select id="00NU7000006XpLF" name="00NU7000006XpLF" class="w-full p-2 border border-gray-300 rounded-lg" required>
               <option value="">--Select--</option>
               <option value="Yes">Yes</option>
@@ -492,10 +540,15 @@ Policy Changes        </h3>
           RightTrack Participation Details
         </h3>
     <!-- RightTrack Participation Section (unchanged) -->
-    <div id="rightTrackSection" >
-      <label class="block text-sm font-medium text-gray-700">
-        Do you want to participate for RightTrack?
-      </label>
+    <div id="rightTrackSection"  >
+     <div class="tooltip">
+  <label class="block text-sm font-medium text-gray-700">
+    Do you want to participate for RightTrack?
+  </label>
+  <span class="tooltiptext">
+    Rewards policyholders for their safe driving habits, providing an instant 10% discount when they enroll. Completing the program takes only 90 days and guarantees a discount between 5% and 30%, after meeting the minimum program requirements.
+  </span>
+</div>
       <select id="00NU7000006VUPl" name="00NU7000006VUPl" required class="w-full p-2 border border-gray-300 rounded-lg mb-4">
         <option value="">--Select--</option>
         <option value="Yes">Yes</option>
@@ -675,7 +728,7 @@ Policy Changes        </h3>
      //   addDriverSection.classList.toggle("hidden", !isAddDriver);
      //   effectiveWrap.classList.toggle("hidden", !showExtra);
      //   driverDetails.classList.toggle("hidden", !showExtra);
-      // document.getElementById("goodStudentFieldsSection").classList.toggle("hidden", !showExtra);
+    // document.getElementById("goodStudentFieldsSection").classList.toggle("hidden", !showExtra);
       }
       alternateMobile?.addEventListener("input", function () {
         const regex = /^[0-9]{10}$/;
@@ -689,7 +742,7 @@ Policy Changes        </h3>
         sr22Fields.classList.toggle("hidden", sr22Select.value !== "Yes");
       }
   //   function toggleNamedInsuredSection() {
-   //     namedInsuredWrap?.classList.toggle("hidden", sr22CaseField.value.trim() === "");
+   //   namedInsuredWrap?.classList.toggle("hidden", sr22CaseField.value.trim() === "");
    //  }
      
       function checkSuspensionStatus() {
@@ -838,3 +891,4 @@ Policy Changes        </h3>
   </form>
 </body>
 </html>
+
