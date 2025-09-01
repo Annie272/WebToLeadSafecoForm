@@ -144,6 +144,7 @@ Policy Changes        </h3>
         />
         <div id="policyNumberError" class="error-message hidden">Policy Number must start with 'Y' and be 8 digits total (e.g., Y1234567).</div>
       </div>
+      <!--
       <div>
         <label for="00NU7000006Hi7d" class="block text-sm font-medium text-gray-700">Line of Business</label>
         <select id="00NU7000006Hi7d" name="00NU7000006Hi7d" required class="mt-1 w-full p-2 border border-gray-300 rounded-lg shadow-sm">
@@ -157,6 +158,7 @@ Policy Changes        </h3>
           <option value="Watercraft">Watercraft</option>
         </select>
       </div>
+      -->
       <div id="addDriverEffectiveDateWrap" >
         <label for="00NU7000005zuLl" class="block text-sm font-medium text-gray-700">Effective Date</label>
         <input 
@@ -690,7 +692,7 @@ discount. You are required to provide within 7 days to avoid discount being remo
      // const policyAction = document.getElementById("00NU7000005zuNN");
       const policyEmail = document.getElementById("Email");
       const policyNumber = policyNumberInput;
-      const lob = document.getElementById("00NU7000006Hi7d");
+    //  const lob = document.getElementById("00NU7000006Hi7d");
     const addDriverSection = document.getElementById("addDriverSection");
      const effectiveWrap = document.getElementById("addDriverEffectiveDateWrap");
       const driverDetails = document.getElementById("driverDetailsSection");
@@ -730,7 +732,7 @@ discount. You are required to provide within 7 days to avoid discount being remo
       function updateAddDriverVisibility() {
         const isAddDriver = policyAction.value === "Add Driver";
         const hasPolicy = policyNumber && policyNumber.value.trim() !== "";
-        const hasLOB = lob && lob.value.trim() !== "";
+      //  const hasLOB = lob && lob.value.trim() !== "";
         const showExtra = isAddDriver && hasPolicy && hasLOB;
      //   addDriverSection.classList.toggle("hidden", !isAddDriver);
      //   effectiveWrap.classList.toggle("hidden", !showExtra);
@@ -808,7 +810,7 @@ discount. You are required to provide within 7 days to avoid discount being remo
         const isAddDriver = policyAction.value === "Add Driver";
         const isReplaceVehicle = policyAction.value === "Replace Vehicle";
         policyNumber.required = isAddDriver || isReplaceVehicle;
-        lob.required = isAddDriver || isReplaceVehicle;
+      //  lob.required = isAddDriver || isReplaceVehicle;
         document.getElementById("00NU7000005zuLl").required = isAddDriver || isReplaceVehicle;
         const sr22Visible = sr22Select.value === "Yes";
         document.getElementById("00NU7000006VU4n").required = sr22Visible;
@@ -825,8 +827,8 @@ discount. You are required to provide within 7 days to avoid discount being remo
         const named = namedInsuredToggle.value === "Yes";
         namedInsuredDropdown.required = named;
         // Assume goodStudentDiscount/goodStudentDriver are defined if present
-        if (document.getElementById("00NU7000006XpI1")) document.getElementById("00NU7000006XpI1").required = isAddDriver && hasPolicy && hasLOB;
-        if (document.getElementById("00NU7000006XpLF")) document.getElementById("00NU7000006XpLF").required = isAddDriver && hasPolicy && hasLOB;
+        if (document.getElementById("00NU7000006XpI1")) document.getElementById("00NU7000006XpI1").required = isAddDriver && hasPolicy ;
+        if (document.getElementById("00NU7000006XpLF")) document.getElementById("00NU7000006XpLF").required = isAddDriver && hasPolicy;
       }
       firstName?.addEventListener("input", updateNamedInsuredDropdown);
       middleName?.addEventListener("input", updateNamedInsuredDropdown);
@@ -836,7 +838,7 @@ discount. You are required to provide within 7 days to avoid discount being remo
       licensedAgeInput?.addEventListener("input", validateAgeMatch);
       policyAction?.addEventListener("change", updateAddDriverVisibility);
       policyNumber?.addEventListener("input", updateAddDriverVisibility);
-      lob?.addEventListener("change", updateAddDriverVisibility);
+     // lob?.addEventListener("change", updateAddDriverVisibility);
       sr22Select?.addEventListener("change", toggleSR22Fields);
       suspensionSelect?.addEventListener("change", checkSuspensionStatus);
       incidentsSelect?.addEventListener("change", checkIncidentsStatus);
@@ -898,3 +900,4 @@ discount. You are required to provide within 7 days to avoid discount being remo
   </form>
 </body>
 </html>
+
