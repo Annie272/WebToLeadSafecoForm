@@ -733,7 +733,7 @@ discount. You are required to provide within 7 days to avoid discount being remo
         const isAddDriver = policyAction.value === "Add Driver";
         const hasPolicy = policyNumber && policyNumber.value.trim() !== "";
       //  const hasLOB = lob && lob.value.trim() !== "";
-        const showExtra = isAddDriver && hasPolicy && hasLOB;
+        const showExtra = isAddDriver && hasPolicy ;
      //   addDriverSection.classList.toggle("hidden", !isAddDriver);
      //   effectiveWrap.classList.toggle("hidden", !showExtra);
      //   driverDetails.classList.toggle("hidden", !showExtra);
@@ -900,4 +900,3 @@ discount. You are required to provide within 7 days to avoid discount being remo
   </form>
 </body>
 </html>
-
