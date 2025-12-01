@@ -622,6 +622,8 @@ discount. You are required to provide within 7 days to avoid discount being remo
 
     <script>
     document.addEventListener("DOMContentLoaded", function () {
+
+      
       // --- MM/DD/YYYY Pikaday Setup & Validation ---
       function parseMMDDYYYY(s) {
         if (!/^(\d{2})\/(\d{2})\/(\d{4})$/.test(s)) return null;
@@ -722,6 +724,8 @@ discount. You are required to provide within 7 days to avoid discount being remo
       const alternateMobileWrap = document.getElementById("alternateMobileWrap");
       const alternateMobile = document.getElementById("00N4x00000QCvmg");
 
+      
+
       function validateAgeMatch() {
         const birthdate = birthdateInput.value;
         const enteredAge = parseInt(licensedAgeInput.value);
@@ -755,8 +759,14 @@ discount. You are required to provide within 7 days to avoid discount being remo
         }
       });
       function toggleSR22Fields() {
-        sr22Fields.classList.toggle("hidden", sr22Select.value !== "Yes");
-      }
+  const sr22Select = document.getElementById('00NU7000006VU3B');
+  const sr22Fields = document.getElementById('sr22AdditionalFields');
+  if (!sr22Select || !sr22Fields) return;
+  sr22Fields.classList.toggle('hidden', sr22Select.value !== 'Yes');
+}
+
+sr22Select?.addEventListener('change', toggleSR22Fields);
+toggleSR22Fields();
   //   function toggleNamedInsuredSection() {
    //   namedInsuredWrap?.classList.toggle("hidden", sr22CaseField.value.trim() === "");
    //  }
@@ -907,4 +917,3 @@ discount. You are required to provide within 7 days to avoid discount being remo
   </form>
 </body>
 </html>
-
