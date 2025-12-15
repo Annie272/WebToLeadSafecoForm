@@ -65,22 +65,27 @@
 
     <!-- Hidden Fields -->
     <input type="hidden" name="oid" value="00DU7000006EuID" />
-    <input type="hidden" name="recordType" value="012U7000003Ie25IAC" />
+  <!--  <input type="hidden" name="recordType" value="012U7000003Ie25IAC" /> -->
+
     <input type="hidden" name="retURL" value="https://bennettandporter.com/" />
     <input type="hidden" name="first_name" value="driver1" />
     <input type="hidden" name="last_name" value="Testlead1" />
     <input type="hidden" name="status" value="New" />
-              <input type="hidden" name="Carrier__c" value ="Safeco">
-
+    
     <input type="hidden" name="phone" value="2367236712" />
     <input type="hidden" name="lead_source" value="Web Form" />
     <input type="hidden" name="company" value="Caelius Test Safeco New" />
     <input type="hidden" name="debugEmail"  value="annie.rawal@caeliusconsulting.com">
     <input type="hidden" name="delete_Action_Form__c" value="1" />
+                                <input type="hidden" name="Carrier__c" value ="Safeco">
+                                <input type="hidden" id="formDataJson" name="Form_Captured_Data__c" value="" />
+<input type="hidden" id="formMissingData" name="Form_Missing_Data__c" value="" />
+
+
       <input
           type="hidden"
           id="00NU7000005zuNN"
-          name="00NU7000005zuNN"
+          name="Policy_Action__c"
           value="Add Driver"
         />
 
@@ -96,24 +101,24 @@ Policy Changes        </h3>
 
  <div class="mb-4">
           <label for="email" class="block text-sm font-medium text-gray-700">
-            Email
+            Email<span class="text-red-600">*</span>
           </label>
           <input
             type="email" id="email" name="email"class="mt-1 w-full p-2 border border-gray-300 rounded-lg shadow-sm focus:ring-blue-500 focus:border-blue-500"
             autocomplete="off"
-            required
+            
           />
         </div>
 
 
     <div>
-      <label class="block text-sm font-medium text-gray-700 mb-2">Select the Request Type:</label>
+      <label class="block text-sm font-medium text-gray-700 mb-2">Select the Request Type:<span class="text-red-600">*</span></label>
       <div class="flex space-x-4 mb-2">
         <label class="inline-flex items-center ">
-          <input type="radio" name="00NU7000006IOzh" value="Quote" required class="mr-2 " />Quote
+          <input type="radio" name="Is_this_a_quote_or_a_change_request__c" value="Quote"  class="mr-2 " />Quote
         </label>
         <label class="inline-flex items-center">
-          <input type="radio" name="00NU7000006IOzh" value="Endorse" required class="mr-2" />Endorsement
+          <input type="radio" name="Is_this_a_quote_or_a_change_request__c" value="Endorse"  class="mr-2" />Endorsement
         </label>
       </div>
       <div id="quotePolicyError" class="error-message hidden ">Please select an option</div>
@@ -138,19 +143,14 @@ Policy Changes        </h3>
     <!-- Add Driver Section (includes custom date pickers) -->
     <div id="addDriverSection" class = "space-y-4">
       <div>
-        <label for="00NU7000005zuX3" class="block text-sm font-medium text-gray-700">Policy Number</label>
+        <label for="00NU7000005zuX3" class="block text-sm font-medium text-gray-700">Policy Number<span class="text-red-600">*</span></label>
         <input
           type="text"
           id="00NU7000005zuX3"
-          name="00NU7000005zuX3"
-          required
-          pattern="Y\d{7}"
-          maxlength="8"
-          minlength="8"
+          name="Policy_Number__c"
           class="mt-1 w-full p-2 border border-gray-300 rounded-lg shadow-sm"
           title="Policy Number must start with 'Y' and be 8 characters total (e.g., Y1234567)"
         />
-        <div id="policyNumberError" class="error-message hidden">Policy Number must start with 'Y' and be 8 digits total (e.g., Y1234567).</div>
       </div>
       <!--
       <div>
@@ -168,14 +168,14 @@ Policy Changes        </h3>
       </div>
       -->
       <div id="addDriverEffectiveDateWrap" >
-        <label for="00NU7000005zuLl" class="block text-sm font-medium text-gray-700">Effective Date</label>
+        <label for="00NU7000005zuLl" class="block text-sm font-medium text-gray-700">Effective Date<span class="text-red-600">*</span></label>
         <input 
           type="text" 
           id="00NU7000005zuLl" 
-          name="00NU7000005zuLl"
+          name="Date__c"
           placeholder="MM/DD/YYYY"
           autocomplete="off"
-          required
+          
           class="mt-1 w-full p-2 border border-gray-700 rounded-lg shadow-sm sf-date-field" />
         <div id="00NU7000005zuLl_error" class="error-message hidden">Enter a valid MM/DD/YYYY date.</div>
       </div>
@@ -191,34 +191,34 @@ Policy Changes        </h3>
       <div id="driverDetailsSection" class = "space-y-4">
         <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
           <div>
-            <label for="00NU7000005zuOz" class="block text-sm font-medium text-gray-700">First Name</label>
-            <input type="text" id="00NU7000005zuOz" name="00NU7000005zuOz" required class="w-full p-2 border border-gray-300 rounded-lg" />
+            <label for="00NU7000005zuOz" class="block text-sm font-medium text-gray-700">First Name<span class="text-red-600">*</span></label>
+            <input type="text" id="00NU7000005zuOz" name="First_Name__c"  class="w-full p-2 border border-gray-300 rounded-lg" />
           </div>
           <div>
             <label for="00NU7000006bcKb" class="block text-sm font-medium text-gray-700">Middle Name</label>
-            <input type="text" id="00NU7000006bcKb" name="00NU7000006bcKb" class="w-full p-2 border border-gray-300 rounded-lg" />
+            <input type="text" id="00NU7000006bcKb" name="Middle_Name__c" class="w-full p-2 border border-gray-300 rounded-lg" />
           </div>
           <div>
-            <label for="00NU7000005zuQb" class="block text-sm font-medium text-gray-700">Last Name</label>
-            <input type="text" id="00NU7000005zuQb" name="00NU7000005zuQb" required class="w-full p-2 border border-gray-300 rounded-lg" />
+            <label for="00NU7000005zuQb" class="block text-sm font-medium text-gray-700">Last Name<span class="text-red-600">*</span></label>
+            <input type="text" id="00NU7000005zuQb" name="Last_Name__c"  class="w-full p-2 border border-gray-300 rounded-lg" />
           </div>
         </div>
         <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
           <div>
-            <label for="00NU7000005zuSD" class="block text-sm font-medium text-gray-700">Birthdate</label>
+            <label for="00NU7000005zuSD" class="block text-sm font-medium text-gray-700">Birthdate<span class="text-red-600">*</span></label>
             <input 
               type="text"
               id="00NU7000005zuSD"
-              name="00NU7000005zuSD"
+              name="Date_of_Birth__c"
               placeholder="MM/DD/YYYY"
               autocomplete="off"
-              required
+              
               class="w-full p-2 border border-gray-300 rounded-lg sf-date-field" />
             <div id="00NU7000005zuSD_error" class="error-message hidden">Enter a valid MM/DD/YYYY date.</div>
           </div>
           <div>
-            <label for="00NU7000005zqRr" class="block text-sm font-medium text-gray-700">Gender</label>
-            <select id="00NU7000005zqRr" name="00NU7000005zqRr" required class="w-full p-2 border border-gray-300 rounded-lg">
+            <label for="00NU7000005zqRr" class="block text-sm font-medium text-gray-700">Gender<span class="text-red-600">*</span></label>
+            <select id="00NU7000005zqRr" name="Gender__c"  class="w-full p-2 border border-gray-300 rounded-lg">
               <option value="">--Select--</option>
               <option value="Male">Male</option>
               <option value="Female">Female</option>
@@ -228,8 +228,8 @@ Policy Changes        </h3>
         </div>
         <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
           <div>
-            <label for="00NU7000005zuTp" class="block text-sm font-medium text-gray-700">Marital Status</label>
-            <select id="00NU7000005zuTp" name="00NU7000005zuTp" required class="w-full p-2 border border-gray-300 rounded-lg">
+            <label for="00NU7000005zuTp" class="block text-sm font-medium text-gray-700">Marital Status<span class="text-red-600">*</span></label>
+            <select id="00NU7000005zuTp" name="Marital_Status__c"  class="w-full p-2 border border-gray-300 rounded-lg">
               <option value="">--Select--</option>
               <option value="Single">Single</option>
               <option value="Married">Married</option>
@@ -239,8 +239,8 @@ Policy Changes        </h3>
             </select>
           </div>
           <div>
-            <label for="00NU7000005zuVR" class="block text-sm font-medium text-gray-700">Relationship to Insured</label>
-            <select id="00NU7000005zuVR" name="00NU7000005zuVR" required class="w-full p-2 border border-gray-300 rounded-lg">
+            <label for="00NU7000005zuVR" class="block text-sm font-medium text-gray-700">Relationship to Insured<span class="text-red-600">*</span></label>
+            <select id="00NU7000005zuVR" name="Relationship_to_Insured__c"  class="w-full p-2 border border-gray-300 rounded-lg">
               <option value="">--Select--</option>
               <option value="Spouse">Spouse</option>
               <option value="Domestic Partner">Domestic Partner</option>
@@ -253,14 +253,14 @@ Policy Changes        </h3>
         </div>
         <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
           <div>
-            <label for="00NU7000006VQAr" class="block text-sm font-medium text-gray-700">Driver Type</label>
-            <select id="00NU7000006VQAr" name="00NU7000006VQAr" required class="w-full p-2 border border-gray-300 rounded-lg">
+            <label for="00NU7000006VQAr" class="block text-sm font-medium text-gray-700">Driver Type<span class="text-red-600">*</span></label>
+            <select id="00NU7000006VQAr" name="Driver_Type__c"  class="w-full p-2 border border-gray-300 rounded-lg">
               <option value="Rated" selected>Rated</option>
             </select>
           </div>
           <div>
-            <label for="00NU7000005zuIX" class="block text-sm font-medium text-gray-700">License State</label>
-            <select id="00NU7000005zuIX" name="00NU7000005zuIX" required class="w-full p-2 border border-gray-300 rounded-lg">
+            <label for="00NU7000005zuIX" class="block text-sm font-medium text-gray-700">License State<span class="text-red-600">*</span></label>
+            <select id="00NU7000005zuIX" name="State_Licensed__c"  class="w-full p-2 border border-gray-300 rounded-lg">
               <option value="">--None--</option>
               <!-- all states options here as before -->
               <option value="Arizona">Arizona</option>
@@ -338,17 +338,17 @@ Policy Changes        </h3>
           </div>
         </div>
         <div>
-          <label for="00NU7000005zuK9" class="block text-sm font-medium text-gray-700">License Number</label>
-          <input type="text" id="00NU7000005zuK9" name="00NU7000005zuK9" required class="w-full p-2 border border-gray-300 rounded-lg" />
+          <label for="00NU7000005zuK9" class="block text-sm font-medium text-gray-700">License Number<span class="text-red-600">*</span></label>
+          <input type="text" id="00NU7000005zuK9" name="Drivers_license_number__c"  class="w-full p-2 border border-gray-300 rounded-lg" />
         </div>
         <div>
-          <label for="00NU7000006XoH7" class="block text-sm font-medium text-gray-700">Age When First Licensed</label>
-          <input type="number" id="00NU7000006XoH7" name="00NU7000006XoH7" required class="w-full p-2 border border-gray-300 rounded-lg" />
+          <label for="00NU7000006XoH7" class="block text-sm font-medium text-gray-700">Age When First Licensed<span class="text-red-600">*</span></label>
+          <input type="number" id="00NU7000006XoH7" name="Age_When_First_Licensed__c"  class="w-full p-2 border border-gray-300 rounded-lg" />
           <div id="ageValidationError" class="text-sm text-red-500 mt-1 hidden">Age does not match birthdate.</div>
         </div>
         <div>
-          <label for="00NU7000006VQUD" class="block text-sm font-medium text-gray-700">Has this driver's license been suspended/revoked in last 5 years?</label>
-          <select id="00NU7000006VQUD" name="00NU7000006VQUD" class="w-full p-2 border border-gray-300 rounded-lg">
+          <label for="00NU7000006VQUD" class="block text-sm font-medium text-gray-700">Has this driver's license been suspended/revoked in last 5 years?<span class="text-red-600">*</span></label>
+          <select id="00NU7000006VQUD" name="Has_license_suspended_revoked__c" class="w-full p-2 border border-gray-300 rounded-lg">
             <option value="">--Select--</option>
             <option value="Yes">Yes</option>
             <option value="No">No</option>
@@ -356,9 +356,9 @@ Policy Changes        </h3>
         </div>
         <div>
           <label for="00NU7000006VU1Z" class="block text-sm font-medium text-gray-700">
-            Has driver had any reportable incidents?
+            Has driver had any reportable incidents?<span class="text-red-600">*</span>
           </label>
-          <select id="00NU7000006VU1Z" name="00NU7000006VU1Z" required class="w-full p-2 border border-gray-300 rounded-lg">
+          <select id="00NU7000006VU1Z" name="Has_driver_had_any_reportable_incidents__c"  class="w-full p-2 border border-gray-300 rounded-lg">
             <option value="">--Select--</option>
             <option value="Yes">Yes</option>
             <option value="No">No</option>
@@ -371,7 +371,7 @@ Policy Changes        </h3>
           <div>
             <div class="tooltip">
   <label for="00NU7000006XpI1" class="block text-sm font-medium text-gray-700">
-    Good Student Discount
+    Good Student Discount<span class="text-red-600">*</span>
   </label>
   <span class="tooltiptext">
     Young driver Full time student with cumulative GPA 3.0 or higher/ B average.
@@ -382,7 +382,7 @@ Policy Changes        </h3>
 discount. You are required to provide within 7 days to avoid discount being removed."
   </span>
 </div>
-            <select id="00NU7000006XpI1" name="00NU7000006XpI1" class="w-full p-2 border border-gray-300 rounded-lg" required>
+            <select id="00NU7000006XpI1" name="Good_Student_Discount__c" class="w-full p-2 border border-gray-300 rounded-lg" >
               <option value="">--Select--</option>
               <option value="Yes">Yes</option>
               <option value="No">No</option>
@@ -392,7 +392,7 @@ discount. You are required to provide within 7 days to avoid discount being remo
           <div>
             <div class="tooltip">
   <label for="00NU7000006XpLF" class="block text-sm font-medium text-gray-700">
-    Distant Student Discount
+    Distant Student Discount<span class="text-red-600">*</span>
   </label>
   <span class="tooltiptext">
     A Youthful Operator who is in your customer's household but is a resident student at an educational institution over 100 road miles from the principal garaging address qualifies for this discount if they do not have a car at school.
@@ -402,7 +402,7 @@ discount. You are required to provide within 7 days to avoid discount being remo
 discount. You are required to provide within 7 days to avoid discount being removed."
   </span>
 </div>
-            <select id="00NU7000006XpLF" name="00NU7000006XpLF" class="w-full p-2 border border-gray-300 rounded-lg" required>
+            <select id="00NU7000006XpLF" name="Distant_Student_Discount__c" class="w-full p-2 border border-gray-300 rounded-lg" >
               <option value="">--Select--</option>
               <option value="Yes">Yes</option>
               <option value="No">No</option>
@@ -412,13 +412,13 @@ discount. You are required to provide within 7 days to avoid discount being remo
         <div>
           <div class="tooltip">
   <label for="sr22Filing" class="block text-sm font-medium text-gray-700">
-    SR-22 Filing
+    SR-22 Filing<span class="text-red-600">*</span>
   </label>
   <span class="tooltiptext">
     Required to file proof of financial responsibility with the state when convicted of a violation, such as driving without insurance or a serious moving violation. The filing end date and state will also need to be provided.
   </span>
 </div>
-          <select id="00NU7000006VU3B" name="00NU7000006VU3B" required class="w-full p-2 border border-gray-300 rounded-lg">
+          <select id="00NU7000006VU3B" name="SR_22_Filing__c"  class="w-full p-2 border border-gray-300 rounded-lg">
             <option value="">--Select--</option>
             <option value="Yes">Yes</option>
             <option value="No">No</option>
@@ -426,19 +426,19 @@ discount. You are required to provide within 7 days to avoid discount being remo
         </div>
         <div id="sr22AdditionalFields" class="hidden space-y-4">
           <div>
-            <label for="00NU7000006VU4n" class="block text-sm font-medium text-gray-700">SR-22 Filing End Date</label>
+            <label for="00NU7000006VU4n" class="block text-sm font-medium text-gray-700">SR-22 Filing End Date<span class="text-red-600">*</span></label>
             <input 
               type="text" 
               id="00NU7000006VU4n" 
-              name="00NU7000006VU4n"
+              name="SR_22_Filing_End_Date__c"
               placeholder="MM/DD/YYYY"
               autocomplete="off"
               class="w-full p-2 border border-gray-300 rounded-lg sf-date-field" />
             <div id="00NU7000006VU4n_error" class="error-message hidden">Enter a valid MM/DD/YYYY date.</div>
           </div>
           <div>
-            <label for="00NU70000063b2n" class="block text-sm font-medium text-gray-700">SR-22 Filing State</label>
-            <select id="00NU70000063b2n" name="00NU70000063b2n"  class="w-full p-2 border border-gray-300 rounded-lg">
+            <label for="00NU70000063b2n" class="block text-sm font-medium text-gray-700">SR-22 Filing State<span class="text-red-600">*</span></label>
+            <select id="00NU70000063b2n" name="SR_22_Filling_State__c"  class="w-full p-2 border border-gray-300 rounded-lg">
               <option value="">--None--</option>
              <option value="Arizona">Arizona</option>
             <option value="Alabama">Alabama</option>
@@ -513,8 +513,8 @@ discount. You are required to provide within 7 days to avoid discount being remo
             </select>
           </div>
           <div>
-            <label for="00NU7000006VUBF" class="block text-sm font-medium text-gray-700 mb-2">SR-22 Case Number</label>
-            <input type="text" id="00NU7000006VUBF" name="00NU7000006VUBF" class="w-full p-2 border border-gray-300 rounded-lg shadow-sm" />
+            <label for="00NU7000006VUBF" class="block text-sm font-medium text-gray-700 mb-2">SR-22 Case Number<span class="text-red-600">*</span></label>
+            <input type="text" id="00NU7000006VUBF" name="SR_22_Case_Number__c" class="w-full p-2 border border-gray-300 rounded-lg shadow-sm" />
           </div>
         </div>
       </div>
@@ -530,18 +530,18 @@ discount. You are required to provide within 7 days to avoid discount being remo
     <!-- Additional Named Insured Section (unchanged) -->
     <div id="namedInsuredSection" class="space-y-4 pt-4 border-t border-gray-200 mt-4" >
       <label for="00NU7000006VUJJ" class="block text-sm font-medium text-gray-700">
-        IF adding a spouse, do you want to add as additional Named Insured?
+        IF adding a spouse, do you want to add as additional Named Insured?<span class="text-red-600">*</span>
       </label>
-      <select id="00NU7000006VUJJ" name="00NU7000006VUJJ" required class="w-full p-2 border border-gray-300 rounded-lg" >
+      <select id="00NU7000006VUJJ" name="Add_additional_Named_Insured_Driver__c"  class="w-full p-2 border border-gray-300 rounded-lg" >
         <option value="">--Select--</option>
         <option value="Yes">Yes</option>
         <option value="No">No</option>
       </select>
       <div class="hidden">
         <label for="00NU7000006VUKv"  class="block text-sm font-medium text-gray-700">
-          Select Named Insured Driver
+          Select Named Insured Driver<span class="text-red-600">*</span>
         </label>
-        <select id="00NU7000006VUKv" name="00NU7000006VUKv"  class="w-full p-2 border border-gray-300 rounded-lg">
+        <select id="00NU7000006VUKv" name="Select_Named_Insured_Driver__c"  class="w-full p-2 border border-gray-300 rounded-lg">
           <option value="">--Select--</option>
         </select>
       </div>
@@ -560,21 +560,22 @@ discount. You are required to provide within 7 days to avoid discount being remo
     <div id="rightTrackSection"  >
      <div class="tooltip">
   <label class="block text-sm font-medium text-gray-700">
-    Do you want to participate for RightTrack?
+    Do you want to participate for RightTrack?<span class="text-red-600">*</span>
   </label>
   <span class="tooltiptext">
     Rewards policyholders for their safe driving habits, providing an instant 10% discount when they enroll. Completing the program takes only 90 days and guarantees a discount between 5% and 30%, after meeting the minimum program requirements.
   </span>
 </div>
-      <select id="00NU7000006VUPl" name="00NU7000006VUPl" required class="w-full p-2 border border-gray-300 rounded-lg mb-4">
+      <select id="00NU7000006VUPl" name="Want_to_participate_for_RightTrack__c" 
+       class="w-full p-2 border border-gray-300 rounded-lg mb-4">
         <option value="">--Select--</option>
         <option value="Yes">Yes</option>
         <option value="No">No</option>
       </select>
       <div id="rightTrackDetails" class="hidden space-y-4">
         <div>
-          <label for="00NU7000006VUWD" class="block text-sm font-medium text-gray-700">Request Reason</label>
-          <select id="00NU7000006VUWD" name="00NU7000006VUWD" class="w-full p-2 border border-gray-300 rounded-lg">
+          <label for="00NU7000006VUWD" class="block text-sm font-medium text-gray-700">Request Reason<span class="text-red-600">*</span></label>
+          <select id="00NU7000006VUWD" name="Request_Reason__c" class="w-full p-2 border border-gray-300 rounded-lg">
             <option value="">--Select--</option>
             <option value="New youthful driver">New youthful driver</option>
             <option value="Save Opportunity">Save Opportunity</option>
@@ -583,42 +584,49 @@ discount. You are required to provide within 7 days to avoid discount being remo
           </select>
         </div>
         <div>
-          <label for="00NU7000006Xogv" class="block text-sm font-medium text-gray-700">Email</label>
-          <input type="email" id="00NU7000006Xogv" name="00NU7000006Xogv" class="w-full p-2 border border-gray-300 rounded-lg" />
+          <label for="00NU7000006Xogv" class="block text-sm font-medium text-gray-700">Email<span class="text-red-600">*</span></label>
+          <input type="email" id="00NU7000006Xogv" name="Driver_Email__c" class="w-full p-2 border border-gray-300 rounded-lg" />
         </div>
         <div>
-          <label for="00NU7000006VQPO" class="block text-sm font-medium text-gray-700 ">Mobile Phone is same as Primary Phone?</label>
-          <select id="00NU7000006VQPO" name="00NU7000006VQPO" class="w-full p-2 border border-gray-300 rounded-lg mb-4">
+          <label for="00NU7000006VQPO" class="block text-sm font-medium text-gray-700 ">Mobile Phone is same as Primary Phone?<span class="text-red-600">*</span></label>
+          <select id="00NU7000006VQPO" name="Mobile_Phone_is_same_as_Primary_Phone__c" class="w-full p-2 border border-gray-300 rounded-lg mb-4">
             <option value="">--Select--</option>
             <option value="Yes">Yes</option>
             <option value="No">No</option>
           </select>
         </div>
         <div id="alternateMobileWrap" class="hidden">
-          <label for="00N4x00000QCvmg" class="block text-sm font-medium text-gray-700 ">Mobile/Alternate Phone Number</label>
-          <input type="tel" id="00N4x00000QCvmg" name="00N4x00000QCvmg" pattern="[0-9]{10}" placeholder="e.g. 5551234567" class="w-full p-2 border border-gray-300 rounded-lg" />
+          <label for="00N4x00000QCvmg" class="block text-sm font-medium text-gray-700 ">Mobile/Alternate Phone Number<span class="text-red-600">*</span></label>
+          <input type="tel" id="00N4x00000QCvmg" name="Alternate_Phone__c" pattern="[0-9]{10}" placeholder="e.g. 5551234567" class="w-full p-2 border border-gray-300 rounded-lg" />
         </div>
       </div>
     </div>
     <div id="rightTrackConfirmWrap" class="hidden space-y-2">
       <div>
         <label class="inline-flex items-start gap-2 text-sm text-gray-700 ">
-          <input type="checkbox" id="00NU7000006XpRh" name="00NU7000006XpRh" value="1" class="mt-1" />
-          I have confirmed the customer’s compatible smartphone and email address.
+          <input type="checkbox" id="00NU7000006XpRh" name="Rightrack_Confirmation_for_phone_email__c" value="1" class="mt-1" />
+          I have confirmed the customer’s compatible smartphone and email address.<span class="text-red-600">*</span>
         </label>
       </div>
       <div>
         <label class="inline-flex items-start gap-2 text-sm text-gray-700">
-          <input type="checkbox" id="00NU7000006XoKM" name="00NU7000006XoKM" value="1" class="mt-1" />
-          I have explained the RightTrack program to the customer.
+          <input type="checkbox" id="00NU7000006XoKM" name="Rightrack_Confirmation_explained__c" value="1" class="mt-1" />
+          I have explained the RightTrack program to the customer.<span class="text-red-600">*</span>
         </label>
       </div>
     </div>
     </section>
     <div class="pt-4">
-      <button type="submit" class="w-full bg-blue-600 hover:bg-blue-700 text-white py-2 px-4 rounded-lg shadow">
-        Submit
-      </button>
+  <button
+    type="button"
+    id="reviewBtn"
+    class="w-full bg-blue-600 hover:bg-blue-700 text-white py-2 px-4 rounded-lg shadow"
+  >
+    Submit
+  </button>
+</div>
+
+
     </div>
 
     <script>
@@ -683,13 +691,13 @@ discount. You are required to provide within 7 days to avoid discount being remo
 
       // --- Policy Number Live Validation ---
       const policyNumberInput = document.getElementById("00NU7000005zuX3");
-      const policyNumberError = document.getElementById("policyNumberError");
+   //   const policyNumberError = document.getElementById("policyNumberError");
       function validatePolicyNumberField() {
         const val = policyNumberInput.value.trim();
         const valid = /^Y\d{7}$/.test(val);
         policyNumberInput.classList.toggle("error", !valid && val.length > 0);
-        policyNumberError.classList.toggle("hidden", valid || val.length === 0);
-        policyNumberInput.setCustomValidity(valid || val.length === 0 ? "" : "Policy Number must start with 'Y' and be 8 characters (e.g., Y1234567)");
+      //  policyNumberError.classList.toggle("hidden", valid || val.length === 0);
+       // policyNumberInput.setCustomValidity(valid || val.length === 0 ? "" : "Policy Number must start with 'Y' and be 8 characters (e.g., Y1234567)");
       }
       policyNumberInput.addEventListener("input", validatePolicyNumberField);
       policyNumberInput.addEventListener("blur", validatePolicyNumberField);
@@ -699,7 +707,7 @@ discount. You are required to provide within 7 days to avoid discount being remo
       const birthdateInput = document.getElementById("00NU7000005zuSD");
       const licensedAgeInput = document.getElementById("00NU7000006XoH7");
       const ageValidationError = document.getElementById("ageValidationError");
-     // const policyAction = document.getElementById("00NU7000005zuNN");
+      const policyAction = document.getElementById("00NU7000005zuNN");
       const policyEmail = document.getElementById("Email");
       const policyNumber = policyNumberInput;
     //  const lob = document.getElementById("00NU7000006Hi7d");
@@ -824,30 +832,35 @@ toggleSR22Fields();
       righttrackSameMobile?.addEventListener("change", () => {
         alternateMobileWrap.classList.toggle("hidden", righttrackSameMobile.value !== "No");
       });
-      function setDynamicRequiredFields() {
-        const isAddDriver = policyAction.value === "Add Driver";
-        const isReplaceVehicle = policyAction.value === "Replace Vehicle";
-        policyNumber.required = isAddDriver || isReplaceVehicle;
-      //  lob.required = isAddDriver || isReplaceVehicle;
-        document.getElementById("00NU7000005zuLl").required = isAddDriver || isReplaceVehicle;
-        const sr22Visible = sr22Select.value === "Yes";
-        document.getElementById("00NU7000006VU4n").required = sr22Visible;
-        document.getElementById("00NU70000063b2n").required = sr22Visible;
-        sr22CaseField.required = sr22Visible;
+     function setDynamicRequiredFields() {
+  const isAddDriver = policyAction.value === "Add Driver";
+  const isReplaceVehicle = policyAction.value === "Replace Vehicle";
+  const hasPolicy = policyNumber && policyNumber.value.trim() !== "";
 
+  policyNumber.required = isAddDriver || isReplaceVehicle;
+  document.getElementById("00NU7000005zuLl").required = isAddDriver || isReplaceVehicle;
+  const sr22Visible = sr22Select.value === "Yes";
+  document.getElementById("00NU7000006VU4n").required = sr22Visible;
+  document.getElementById("00NU70000063b2n").required = sr22Visible;
+  sr22CaseField.required = sr22Visible;
 
-        const rtVisible = rightTrackParticipation.value === "Yes";
-        document.getElementById("00NU7000006VUWD").required = rtVisible;
-        document.getElementById("00NU7000006Xogv").required = rtVisible;
-        righttrackSameMobile.required = rtVisible;
-        const altRequired = rtVisible && righttrackSameMobile.value === "No";
-        alternateMobile.required = altRequired;
-        const named = namedInsuredToggle.value === "Yes";
-        namedInsuredDropdown.required = named;
-        // Assume goodStudentDiscount/goodStudentDriver are defined if present
-        if (document.getElementById("00NU7000006XpI1")) document.getElementById("00NU7000006XpI1").required = isAddDriver && hasPolicy ;
-        if (document.getElementById("00NU7000006XpLF")) document.getElementById("00NU7000006XpLF").required = isAddDriver && hasPolicy;
-      }
+  const rtVisible = rightTrackParticipation.value === "Yes";
+  document.getElementById("00NU7000006VUWD").required = rtVisible;
+  document.getElementById("00NU7000006Xogv").required = rtVisible;
+  righttrackSameMobile.required = rtVisible;
+  const altRequired = rtVisible && righttrackSameMobile.value === "No";
+  alternateMobile.required = altRequired;
+  const named = namedInsuredToggle.value === "Yes";
+  namedInsuredDropdown.required = named;
+
+  if (document.getElementById("00NU7000006XpI1")) {
+    document.getElementById("00NU7000006XpI1").required = isAddDriver && hasPolicy;
+  }
+  if (document.getElementById("00NU7000006XpLF")) {
+    document.getElementById("00NU7000006XpLF").required = isAddDriver && hasPolicy;
+  }
+}
+
       firstName?.addEventListener("input", updateNamedInsuredDropdown);
       middleName?.addEventListener("input", updateNamedInsuredDropdown);
       lastName?.addEventListener("input", updateNamedInsuredDropdown);
@@ -913,9 +926,191 @@ toggleSR22Fields();
       checkSuspensionStatus();
       setDynamicRequiredFields();
       validatePolicyNumberField();
+
+const fieldData = [
+  // Policy Changes (always visible)
+  { id: "email", label: "Email", type: "email" },
+  { id: "Is_this_a_quote_or_a_change_request__c", label: "Request Type", type: "radio" },
+  { id: "00NU7000005zuX3", label: "Policy Number" },
+  { id: "00NU7000005zuLl", label: "Effective Date", type: "date", sectionId: "addDriverEffectiveDateWrap" },
+
+  // Driver Details – only when driverDetailsSection is visible
+  { id: "00NU7000005zuOz", label: "First Name", sectionId: "driverDetailsSection" },
+  { id: "00NU7000005zuQb", label: "Last Name", sectionId: "driverDetailsSection" },
+  { id: "00NU7000005zuSD", label: "Birthdate", type: "date", sectionId: "driverDetailsSection" },
+  { id: "00NU7000005zqRr", label: "Gender", sectionId: "driverDetailsSection" },
+  { id: "00NU7000005zuTp", label: "Marital Status", sectionId: "driverDetailsSection" },
+  { id: "00NU7000005zuVR", label: "Relationship to Insured", sectionId: "driverDetailsSection" },
+  { id: "00NU7000006VQAr", label: "Driver Type", sectionId: "driverDetailsSection" },
+  { id: "00NU7000005zuIX", label: "License State", sectionId: "driverDetailsSection" },
+  { id: "00NU7000005zuK9", label: "License Number", sectionId: "driverDetailsSection" },
+  { id: "00NU7000006XoH7", label: "Age When First Licensed", sectionId: "driverDetailsSection" },
+  { id: "00NU7000006VU1Z", label: "Has driver had any reportable incidents?", sectionId: "driverDetailsSection" },
+
+  // SR-22 base question
+  { id: "00NU7000006VU3B", label: "SR-22 Filing?", sectionId: "driverDetailsSection" },
+
+  // SR-22 extra details
+  { id: "00NU7000006VU4n", label: "SR-22 Filing End Date", type: "date", sectionId: "sr22AdditionalFields" },
+  { id: "00NU70000063b2n", label: "SR-22 Filing State", sectionId: "sr22AdditionalFields" },
+  { id: "00NU7000006VUBF", label: "SR-22 Case Number", sectionId: "sr22AdditionalFields" },
+
+  // Good Student / Distant Student
+  { id: "00NU7000006XpI1", label: "Good Student Discount", sectionId: "goodStudentFieldsSection" },
+  { id: "00NU7000006XpLF", label: "Distant Student Discount", sectionId: "goodStudentFieldsSection" },
+
+  // Additional Named Insured
+  { id: "00NU7000006VUJJ", label: "Add as Additional Named Insured?", sectionId: "namedInsuredSection" },
+  { id: "00NU7000006VUKv", label: "Select Named Insured Driver", sectionId: "namedInsuredSection" },
+
+  // RightTrack
+  { id: "00NU7000006VUPl", label: "RightTrack Participation", sectionId: "rightTrackSection" },
+{ id: "00NU7000006VQPO", label: "Mobile Phone same as Primary?", sectionId: "rightTrackDetails" },
+  { id: "00NU7000006VUWD", label: "RightTrack Request Reason", sectionId: "rightTrackDetails" },
+  { id: "00NU7000006Xogv", label: "RightTrack Email", type: "email", sectionId: "rightTrackDetails" },
+  { id: "00N4x00000QCvmg", label: "Alternate Mobile Phone", sectionId: "alternateMobileWrap" },
+ { id: "00NU7000006XpRh", label: "I have confirmed the customer’s compatible smartphone and email address.", type: "checkbox" },
+{ id: "00NU7000006XoKM", label: "I have explained the RightTrack program to the customer.", type: "checkbox" }
+
+];
+
+function validateAllFields() {
+  const missingLabels = [];
+  const missingData = [];
+  const completedData = [];
+
+  fieldData.forEach(field => {
+    let val = "";
+    let isMissing = false;
+
+    // Respect section visibility
+    if (field.sectionId) {
+      const section = document.getElementById(field.sectionId);
+      if (!section) return;
+      const isHiddenByClass = section.classList.contains("hidden");
+      const isHiddenByStyle = section.style.display === "none";
+      if (isHiddenByClass || isHiddenByStyle) return;
+    }
+
+    if (field.type === "radio") {
+      const radios = document.querySelectorAll(`input[name="${field.id}"]`);
+      const chosen = Array.from(radios).find(r => r.checked);
+      val = chosen ? chosen.value : "";
+      isMissing = !val;
+    }  else {
+  const input = document.getElementById(field.id);
+  if (!input || input.disabled) return;
+
+  // Special handling for the two RightTrack confirmation checkboxes
+  if (field.type === "checkbox") {
+    const rt = document.getElementById("00NU7000006VUPl");
+    const rtIsYes = rt && rt.value === "Yes";
+
+    // If RightTrack is not Yes, completely skip these fields
+    if (!rtIsYes) return;
+
+    // When RightTrack is Yes, treat "not checked" as missing
+    val = input.checked ? "Yes" : "";
+    isMissing = !input.checked;
+  } else {
+    // Normal text/select/date/email fields
+    val = (input.value || "").trim();
+    if (field.type === "email") {
+      isMissing = !val || !/^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(val);
+    } else if (field.type === "date") {
+      isMissing = !val || !parseMMDDYYYY(val);
+    } else {
+      isMissing = !val;
+    }
+  }
+}
+
+
+    if (isMissing) {
+      missingLabels.push(field.label);
+      missingData.push(field.label);
+    } else {
+      completedData.push(`${field.label}: ${val}`);
+    }
+  });
+
+  return { missingLabels, missingData, completedData };
+}
+const formEl = document.getElementById("mainForm");
+const reviewBtn = document.getElementById("reviewBtn");
+const dialog = document.getElementById("dialog");
+const dialogTitle = document.getElementById("dialogTitle");
+const missingFieldsList = document.getElementById("missingFieldsList");
+const proceedBtn = document.getElementById("proceedBtn");
+const editBtn = document.getElementById("editBtn");
+
+reviewBtn?.addEventListener("click", function () {
+    setDynamicRequiredFields();
+
+  const { missingLabels, missingData, completedData } = validateAllFields();
+
+  const capturedStr = completedData.join("\n");
+  const missingStr = missingData.join("\n");
+
+  const capHidden = document.getElementById("formDataJson");
+  const missHidden = document.getElementById("formMissingData");
+  if (capHidden) capHidden.value = capturedStr;
+  if (missHidden) missHidden.value = missingStr;
+
+  if (missingLabels.length) {
+    dialogTitle.textContent = "Below Mandatory Fields are missing and the Team will contact you shortly.";
+    missingFieldsList.innerHTML = missingLabels.map(l => `<li>${l}</li>`).join("");
+  } else {
+    dialogTitle.textContent = "All mandatory fields are completed. Ready to submit your request?";
+    missingFieldsList.innerHTML = "";
+  }
+  dialog.classList.remove("hidden");
+});
+
+editBtn?.addEventListener("click", function () {
+  dialog.classList.add("hidden");
+});
+
+proceedBtn?.addEventListener("click", function () {
+  dialog.classList.add("hidden");
+  formEl.submit();
+});
+
+
+
+
+
     });
+
+   
+
     </script>
   </form>
+  <div
+  id="dialog"
+  class="hidden fixed inset-0 flex items-center justify-center bg-black bg-opacity-40 z-50"
+  role="dialog"
+  aria-modal="true"
+  aria-labelledby="dialogTitle"
+>
+  <div class="bg-white rounded-lg p-6 max-w-md w-full shadow-lg text-gray-800">
+    <h3 id="dialogTitle" class="text-lg font-semibold mb-4"></h3>
+    <ul id="missingFieldsList" class="mb-4 text-red-600 text-sm"></ul>
+    <div class="flex justify-end space-x-3">
+      <button
+        id="proceedBtn"
+        class="bg-green-600 text-white px-4 py-2 rounded hover:bg-green-700 font-medium"
+      >
+        Proceed to End Request
+      </button>
+      <button
+        id="editBtn"
+        class="bg-gray-300 text-gray-800 px-4 py-2 rounded hover:bg-gray-400 font-medium"
+      >
+        Edit
+      </button>
+    </div>
+  </div>
+</div>
 </body>
 </html>
-
