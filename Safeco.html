@@ -1047,6 +1047,11 @@ const dialogTitle = document.getElementById("dialogTitle");
 const missingFieldsList = document.getElementById("missingFieldsList");
 const proceedBtn = document.getElementById("proceedBtn");
 const editBtn = document.getElementById("editBtn");
+      function formatDateToISO(dateStr) {
+  if (!dateStr || !/^\d{2}\/\d{2}\/\d{4}$/.test(dateStr)) return "";
+  const [month, day, year] = dateStr.split("/");
+  return `${year}-${month.padStart(2, '0')}-${day.padStart(2, '0')}`;
+}
 
 reviewBtn?.addEventListener("click", function () {
     setDynamicRequiredFields();
@@ -1056,16 +1061,16 @@ reviewBtn?.addEventListener("click", function () {
   const capturedStr = completedData.join("\n");
   const missingStr = missingData.join("\n");
   const allFormData = {
-  email: document.getElementById("email")?.value?.trim() || "",
+  Email: document.getElementById("email")?.value?.trim() || "",
   Is_this_a_quote_or_a_change_request:
     document.querySelector('input[name="Is_this_a_quote_or_a_change_request__c"]:checked')?.value || "",
   Policy_Number: document.getElementById("00NU7000005zuX3")?.value?.trim() || "",
-  Date: document.getElementById("00NU7000005zuLl")?.value?.trim() || "",
+Effective_Date: formatDateToISO(document.getElementById("00NU7000005zuLl")?.value?.trim() || ""),
 
   First_Name: document.getElementById("00NU7000005zuOz")?.value?.trim() || "",
   Middle_Name: document.getElementById("00NU7000006bcKb")?.value?.trim() || "",
   Last_Name: document.getElementById("00NU7000005zuQb")?.value?.trim() || "",
-  Date_of_Birth: document.getElementById("00NU7000005zuSD")?.value?.trim() || "",
+Date_of_Birth: formatDateToISO(document.getElementById("00NU7000005zuSD")?.value?.trim() || ""),
   Gender: document.getElementById("00NU7000005zqRr")?.value || "",
   Marital_Status: document.getElementById("00NU7000005zuTp")?.value || "",
   Relationship_to_Insured: document.getElementById("00NU7000005zuVR")?.value || "",
@@ -1080,7 +1085,7 @@ reviewBtn?.addEventListener("click", function () {
   Distant_Student_Discount: document.getElementById("00NU7000006XpLF")?.value || "",
 
   SR_22_Filing: document.getElementById("00NU7000006VU3B")?.value || "",
-  SR_22_Filing_End_Date: document.getElementById("00NU7000006VU4n")?.value?.trim() || "",
+SR22_Filing_End_Date: formatDateToISO(document.getElementById("00NU7000006VU4n")?.value?.trim() || ""),
   SR_22_Filling_State: document.getElementById("00NU70000063b2n")?.value || "",
   SR_22_Case_Number: document.getElementById("00NU7000006VUBF")?.value?.trim() || "",
 
